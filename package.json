@@ -1,23 +1,33 @@
 {
   "name": "pwa_creator",
   "version": "1.0.0",
-  "description": "",
+  "description": "A quick command line code generator for a Progressive Web App",
   "main": "index.js",
   "dependencies": {
-    "inquirer": "^6.0.0"
+    "chalk": "^2.4.1",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "commander": "^2.15.1",
+    "figlet": "^1.2.0",
+    "inquirer": "^6.0.0",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "create-pwa": "./index.js"
+  },
+  "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tyang1/pwa_creator.git"
+    "url": "git+https://github.com/ProgrammersWitAttitudes/pwa_creator.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tyang1/pwa_creator/issues"
+    "url": "https://github.com/ProgrammersWitAttitudes/pwa_creator/issues"
   },
-  "homepage": "https://github.com/tyang1/pwa_creator#readme"
+  "homepage": "https://github.com/ProgrammersWitAttitudes/pwa_creator#readme"
 }
