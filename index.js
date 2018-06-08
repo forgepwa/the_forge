@@ -8,7 +8,6 @@ const commands = require('./lib/commands');
 clear();
 console.log(chalk.blue(figlet.textSync('PWA Creator', { horizontalLayout: 'full' })));
 const run = async () => {
-  inquirer.askTemplates();
-  // commands.installFB();
+  await inquirer.generateTemplate();
 };
 run();
