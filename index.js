@@ -26,12 +26,13 @@ else if (options.redeploy) {
   console.log(chalk.red(figlet.textSync('the Forge', { horizontalLayout: 'full' })));
   console.log('Welcome to the Forge! Launching redeployment prompt. 🔥 🔥 🔥\n');
   const run = async () => {
+    firebase.FBLogin();
+    console.log('⚠️ Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
     const answers = await inquirer.redeploy();
     const firebaseName = answers['firebase-name'];
     const projectChoice = answers['project-choice'];
     console.log(chalk.blue(`Redeploying ${projectChoice}`));
     commands.changeDir(projectChoice);
-    firebase.FBLogin();
     firebase.useAdd(projectChoice, firebaseName);
   };
   run();
@@ -43,7 +44,7 @@ else {
   console.log('Welcome to the Forge! Launching code generator and deployment prompt. 🔥 🔥 🔥\n');
   const run = async () => {
     firebase.FBLogin();
-    console.log(`⚠️ Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).`);
+    console.log('⚠️ Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
     const answers = await inquirer.askTemplate();
     generator.generateTemplate(answers);
     firebase.useAdd(answers['project-name'], answers['firebase-name']);
