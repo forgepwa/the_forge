@@ -1,4 +1,4 @@
-# pwa_creator
+# the Forge
 
 Create *and* deploy PWAs with one simple command.
 
@@ -14,6 +14,6 @@ Everything will be created and deployed for you! Enjoy.
 <img src='https://cdn-images-1.medium.com/max/1400/1*hWVmsnBY6Fr6OoNvIU5pmg.png' width='600' alt='create-pwa'>
 </p>
 
-### Start developing your PWA immediately.
+### Start smithing your PWA immediately.
 
 Your webpack etc is pre-configured for you and ready to go but available and easy to modify to suit your needs as your app progresses.
