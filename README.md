@@ -5,8 +5,9 @@ Create *and* deploy PWAs with one simple command.
 ## Quick run-down:
 ```sh
 npm install -g
-create-pwa
+forge
 ```
+If you aren't already logged-in, you will be redirected to log-in to firebase. After authenticating, create a new firebase project.
 Answers the questions to select what type of PWA you'd like to create and name your new project.
 Everything will be created and deployed for you! Enjoy.
 
