@@ -4,6 +4,8 @@ const clear = require('clear');
 const figlet = require('figlet');
 const commandLineArgs = require('command-line-args');
 const inquirer = require('./lib/inquirer');
+const firebase = require('./lib/firebase');
+const generator = require('./lib/generator');
 
 const optionDefinitions = [
   { name: 'help', alias: 'h', type: Boolean },
@@ -33,7 +35,10 @@ else {
   console.log(chalk.blue(figlet.textSync('PWA Creator', { horizontalLayout: 'full' })));
   console.log('Welcome to create-pwa! Launching code generator and deployment prompt. 🔥 🔥 🔥\n');
   const run = async () => {
-    await inquirer.generateTemplate();
+    await firebase.FBLogin();
+    const answers = await inquirer.askTemplate();
+    await generator.generateTemplate(answers);
+    await firebase.useAdd(answers['project-name'], answers['firebase-name']);
   };
   run();
 }
