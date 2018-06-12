@@ -43,6 +43,7 @@ else {
   console.log('Welcome to the Forge! Launching code generator and deployment prompt. 🔥 🔥 🔥\n');
   const run = async () => {
     firebase.FBLogin();
+    console.log(`⚠️ Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).`);
     const answers = await inquirer.askTemplate();
     generator.generateTemplate(answers);
     firebase.useAdd(answers['project-name'], answers['firebase-name']);
