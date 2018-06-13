@@ -8,6 +8,7 @@
     "clear": "^0.1.0",
     "clui": "^0.3.6",
     "command-line-args": "^5.0.2",
+    "command-line-usage": "^5.0.5",
     "commander": "^2.15.1",
     "configstore": "^3.1.2",
     "figlet": "^1.2.0",
