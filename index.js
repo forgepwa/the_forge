@@ -61,7 +61,7 @@ if (options.help) {
       content: 'Project home: {underline https://github.com/ProgrammersWitAttitudes/pwa_creator}',
     },
   ];
-  const usage = commandLineUsage(sections)
+  const usage = commandLineUsage(sections);
   console.log(usage);
 }
 // Redeploy flag entered, initiate redeployment
