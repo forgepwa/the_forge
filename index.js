@@ -21,7 +21,8 @@ const welcomeLogo = (welcomeString) => {
   clear();
   console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
   console.log(welcomeString);
-}
+};
+
 // Help flag entered, print help text
 if (options.help) {
   welcomeLogo('Welcome to the Forge! This is the help prompt. 🔥 🔥 🔥\n');
