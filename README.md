@@ -1,5 +1,5 @@
 # the Forge
-### Where code is smithed.
+"**Where code is smithed.**"
 
 Create *and* deploy PWAs with one simple command.
 
@@ -13,9 +13,21 @@ Answer the questions to select what type of PWA you'd like to create and name yo
 Everything will be created and deployed for you! Enjoy.
 
 <p align='center'>
-<img src='https://media.giphy.com/media/1o1it23WX6yX85KOiB/giphy.gif' width='600' alt='create-pwa'>
+<img src='https://media.giphy.com/media/1o1it23WX6yX85KOiB/giphy.gif' width='600' alt='forge'>
 </p>
 
 ### Start smithing your PWA immediately.
 
 Your webpack etc is pre-configured for you and ready to go but available and easy to modify to suit your needs as your app progresses.
+
+## How to create a new firebase project:
+Navigate to https://console.firebase.google.com and look for the **Add project** button ->
+<img src='https://imgur.com/nox73zP' width='600' alt='new-project-firebase-console'>
+Follow the instructions to create the new project.
+After creating the project, copy its name for use in the Forge CLI ->
+<img src='http://www.giphy.com/gifs/2wWZiAVRgNC8JY2QHw' width='600' alt='new-project-firebase-console'>
+Enjoy the Forge! 😊
+
+
+## Issues
+Submit the [issues](https://github.com/ProgrammersWitAttitudes/pwa_creator/issues) if you find any bug or have any suggestion.
