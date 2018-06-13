@@ -22,10 +22,10 @@ Your webpack etc is pre-configured for you and ready to go but available and eas
 
 ## How to create a new firebase project:
 Navigate to https://console.firebase.google.com and look for the **Add project** button ->
-<img src='https://imgur.com/nox73zP' width='600' alt='new-project-firebase-console'>
+<img src='https://i.imgur.com/nox73zP.png' width='600' alt='new-project-firebase-console'>
 Follow the instructions to create the new project.
 After creating the project, copy its name for use in the Forge CLI ->
-<img src='http://www.giphy.com/gifs/2wWZiAVRgNC8JY2QHw' width='600' alt='new-project-firebase-console'>
+<img src='https://media.giphy.com/media/2wWZiAVRgNC8JY2QHw/giphy.gif' width='600' alt='copy-project-name'>
 Enjoy the Forge! 😊
 
 
