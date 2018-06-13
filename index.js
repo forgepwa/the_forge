@@ -34,7 +34,7 @@ if (options.help) {
         {
           name: 'local',
           alias: 'l',
-          description: 'Launches the Forge\s command line tool to generate a template without hosting it.',
+          description: 'Launches the Forge\'s command line tool to generate a template without hosting it.',
         },
         {
           name: 'redeploy',
