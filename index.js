@@ -17,11 +17,14 @@ const optionDefinitions = [
 ];
 const options = commandLineArgs(optionDefinitions);
 
-// Help flag entered, print help text
-if (options.help) {
+const welcomeLogo = (welcomeString) => {
   clear();
   console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
-  console.log('Welcome to the Forge! This is the help prompt. 🔥 🔥 🔥\n');
+  console.log(welcomeString);
+}
+// Help flag entered, print help text
+if (options.help) {
+  welcomeLogo('Welcome to the Forge! This is the help prompt. 🔥 🔥 🔥\n');
   const sections = [
     {
       header: 'the Forge',
@@ -72,9 +75,7 @@ if (options.help) {
 }
 // Redeploy flag entered, initiate redeployment
 else if (options.redeploy) {
-  clear();
-  console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
-  console.log('Welcome to the Forge! Launching redeployment prompt. 🔥 🔥 🔥\n');
+  welcomeLogo('Welcome to the Forge! Launching redeployment prompt. 🔥 🔥 🔥\n');
   const run = async () => {
     firebase.FBLogin();
     console.log('Visit https://console.firebase.google.com to view your firebase projects.\n');
@@ -89,9 +90,7 @@ else if (options.redeploy) {
 }
 // Local flag entered, generate template without deployment
 else if (options.local) {
-  clear();
-  console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
-  console.log('Welcome to the Forge! Launching code generator prompt. 🔥 🔥 🔥\n');
+  welcomeLogo('Welcome to the Forge! Launching code generator prompt. 🔥 🔥 🔥\n');
   const run = async () => {
     const answers = await inquirer.askTemplateWithoutDeploy();
     generator.generateTemplate(answers);
@@ -100,9 +99,7 @@ else if (options.local) {
 }
 // No options, go to standard prompt
 else {
-  clear();
-  console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
-  console.log('Welcome to the Forge! Launching code generator and deployment prompt. 🔥 🔥 🔥\n');
+  welcomeLogo('Welcome to the Forge! Launching code generator and deployment prompt. 🔥 🔥 🔥\n');
   const run = async () => {
     firebase.FBLogin();
     console.log('⚠️ Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
