@@ -13,6 +13,7 @@ const commands = require('./lib/commands');
 const optionDefinitions = [
   { name: 'help', alias: 'h', type: Boolean },
   { name: 'redeploy', alias: 'r', type: Boolean },
+  { name: 'local', alias: 'l', type: Boolean },
 ];
 const options = commandLineArgs(optionDefinitions);
 
@@ -25,11 +26,16 @@ if (options.help) {
     {
       header: 'the Forge',
       raw: true,
-      content: 'Generates Progressive Web App code AND hosts it on Firebase.\n\nRun with {bold create-pwa}',
+      content: 'Generates Progressive Web App code AND hosts it on Firebase.\n\nRun with {bold forge}',
     },
     {
       header: 'Options',
       optionList: [
+        {
+          name: 'local',
+          alias: 'l',
+          description: 'Launches the Forge\s command line tool to generate a template without hosting it.',
+        },
         {
           name: 'redeploy',
           alias: 'r',
@@ -58,7 +64,7 @@ if (options.help) {
       },
     },
     {
-      content: 'Project home: {underline https://github.com/ProgrammersWitAttitudes/pwa_creator}',
+      content: 'Project home 🏡 : {underline https://github.com/ProgrammersWitAttitudes/pwa_creator}',
     },
   ];
   const usage = commandLineUsage(sections)
@@ -71,7 +77,7 @@ else if (options.redeploy) {
   console.log('Welcome to the Forge! Launching redeployment prompt. 🔥 🔥 🔥\n');
   const run = async () => {
     firebase.FBLogin();
-    console.log('⚠️ Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
+    console.log('Visit https://console.firebase.google.com to view your firebase projects.\n');
     const answers = await inquirer.redeploy();
     const firebaseName = answers['firebase-name'];
     const projectChoice = answers['project-choice'];
@@ -79,6 +85,17 @@ else if (options.redeploy) {
     commands.changeDir(projectChoice);
     firebase.useAdd(projectChoice, firebaseName);
   };
+  run();
+}
+// Local flag entered, generate template without deployment
+else if (options.local) {
+  clear();
+  console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
+  console.log('Welcome to the Forge! Launching code generator prompt. 🔥 🔥 🔥\n');
+  const run = async () => {
+    const answers = await inquirer.askTemplateWithoutDeploy();
+    generator.generateTemplate(answers);
+  }
   run();
 }
 // No options, go to standard prompt
