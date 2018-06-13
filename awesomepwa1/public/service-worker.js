@@ -42,7 +42,7 @@ self.addEventListener('install', function(e) {
     })
   );
 });
-// /* Original serviceWorder activate */
+
 self.addEventListener('activate', function(e) {
   console.log('[ServiceWorker] Activate');
   e.waitUntil(
@@ -58,22 +58,11 @@ self.addEventListener('activate', function(e) {
   return self.clients.claim();
 });
 
-// self.addEventListener('fetch', function(e) {
-//   console.log('[Service Worker] Fetch', e.request.url);
-//   e.respondWith(
-//     caches.match(e.request).then(function(response) {
-//       return response || fetch(e.request);
-//     })
-//   );
-// });
-
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.open('template-pwa').then(function(cache) {
-      return fetch(event.request).then(function(response) {
-        cache.put(event.request, response.clone());
-        return response;
-      });
+self.addEventListener('fetch', function(e) {
+  console.log('[Service Worker] Fetch', e.request.url);
+  e.respondWith(
+    caches.match(e.request).then(function(response) {
+      return response || fetch(e.request);
     })
   );
 });

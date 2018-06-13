@@ -18,17 +18,6 @@
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
              .register('./service-worker.js')
-             .then(function() { registration.update(); console.log('Service Worker Registered'); });
+             .then(function() { console.log('Service Worker Registered'); });
   }
-
-  // if ('serviceWorker' in navigator) {
-  //   navigator.serviceWorker.register('../service-worker.js', {scope: 'service-worker.js'}).then(function(registration) {
-  //     // registration worked
-  //     console.log('Registration succeeded.');
-  //       registration.update();
-  //   }).catch(function(error) {
-  //     // registration failed
-  //     console.log('Registration failed with ' + error);
-  //   });
-  // };
 })();
