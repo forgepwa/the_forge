@@ -21,7 +21,8 @@ const welcomeLogo = (welcomeString) => {
   clear();
   console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
   console.log(welcomeString);
-}
+};
+
 // Help flag entered, print help text
 if (options.help) {
   welcomeLogo('Welcome to the Forge! This is the help prompt. 🔥 🔥 🔥\n');
@@ -102,7 +103,7 @@ else {
   welcomeLogo('Welcome to the Forge! Launching code generator and deployment prompt. 🔥 🔥 🔥\n');
   const run = async () => {
     firebase.FBLogin();
-    console.log('⚠️ Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
+    console.log('⚠️  Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
     const answers = await inquirer.askTemplate();
     generator.generateTemplate(answers);
     firebase.useAdd(answers['project-name'], answers['firebase-name']);
