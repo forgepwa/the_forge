@@ -8,7 +8,6 @@ const inquirer = require('./lib/inquirer');
 const firebase = require('./lib/firebase');
 const generator = require('./lib/generator');
 const commands = require('./lib/commands');
-const banner = require('./assets/banner');
 
 // Defines commang line option flags
 const optionDefinitions = [
