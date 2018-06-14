@@ -32,7 +32,7 @@ After creating the project, copy its name for use in the Forge CLI ->
 </p>
 Enjoy the Forge! 😊
 
-## Issues
+## Issues / Feedback
 Submit any [issues](https://github.com/ProgrammersWitAttitudes/pwa_creator/issues) you have, any bug you find or any suggestions you'd like.
 
 ## Contributors
