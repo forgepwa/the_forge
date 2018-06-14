@@ -1,8 +1,21 @@
 body {
-  /* background-image: radial-gradient(red, black); */
-  background: url('./forge-bg.jpg');
-  background-size: cover;
   color: white;
+  background-color: black;
+}
+
+.background-image {
+  position: fixed;
+  width: 100%;
+  opacity: .55;
+  z-index: -1;
+}
+@media only screen and (max-device-width: 768px) {
+  .background-image {
+      height: 100%;
+      width: auto;
+      left: -170%;
+      top: -30%;
+  }
 }
 
 .forge {
@@ -11,10 +24,6 @@ body {
 
 .welcome {
   text-align: center;
-}
-
-.container-fluid {
-  background: rgba(0, 0, 0, 0.4);
 }
 
 .offline {
