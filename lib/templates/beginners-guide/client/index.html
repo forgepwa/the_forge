@@ -13,12 +13,13 @@
   <title>Forge Beginners Guide</title>
 </head>
 <body>
+  <div id="background"></div>
   <div class="welcome">
     <h1>Welcome to the Forge beginner's guide! 🔥</h1>
   </div><br/>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm">
+      <div class="col-md intro">
         <h3>What is a PWA? 🤷</h3>
         <p>The term Progressive Web Application (PWA) refers to a collection of paradigms and best practices for making a website or web application that functions similarly to a native mobile application.</p>
         <p>All Progressive Web Apps are:</p>
@@ -28,7 +29,7 @@
           <dd>- Cross-platform loading on different browsers and desktop/mobile platforms</dd>
           <dt>Fast</dt>
           <dd>- Available on a mobile home screen without downloading from an app service</dd>
-          <dd>- Loads rapidly and can cache assets to be served right away</dd>
+          <dd>- Loads rapidly and can cache assets to be served immediately</dd>
           <dt>Engaging</dt>
           <dd>- Fluid UI that looks and feels like a traditional mobile application</dd>
         </dl>
@@ -43,7 +44,7 @@
           <li>Page transitions are snappy - Rendered as a single-page app with front end frameworks</li>
         </ol>
       </div>
-      <div class="col-sm">
+      <div class="col-md navigating">
         <h3>Navigating the Code Base 🗺</h3>
         <p>Here is a quick guide to get you familiar with what's going on in the browser and codebase we just forged for you.</p>
         <h5>Accessing the developer console</h5>
@@ -60,18 +61,22 @@
         <h5>Clearing the cache</h5>
         <p>Just under the "Service Workers" on the Application tab, click the "Clear Storage" option. At the bottom, you can click "Clear site data" to both clear all cached files and unregister your service workers.</p>
       </div>
-      <div class="col-sm">
-        <h3>Try Offline! 🤯</h3>
-        <p>Try turning off your WiFi and refreshing the page. Notice that you can still navigate the site. This is because of the service workers in sw.js! :O</p>
-        <a href="https://developers.google.com/web/ilt/pwa/tools-for-pwa-developers" target="_blank">Service Worker Cache Information</a>
-        <h3>Resources 📚</h3>
-        <p>If you'd like to learn more about PWAs, check out these links:</p>
-        <ul>
-          <li><a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps | Google Developers</a></li>
-          <li><a href="https://pwa.rocks" target="_blank">Example PWAs</a></li>
-          <li><a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/index.html?index=..%2F..%2Fcds17#0" target="_blank">Google Codelabs: Your First PWA Tutorial</a></li>
-        </ul>
-        <p>Thank you for using the Forge!</p>
+      <div class="col-md">
+        <div class="offline">
+          <h3>Try Offline! 🤯</h3>
+          <p>Try turning off your WiFi and refreshing the page. Notice that you can still navigate the site. This is because of the service workers in sw.js! :O</p>
+          <a href="https://developers.google.com/web/ilt/pwa/tools-for-pwa-developers" target="_blank">Service Worker Cache Information</a>
+        </div>
+        <div class="resources">
+          <h3>Resources 📚</h3>
+          <p>If you'd like to learn more about PWAs, check out these links:</p>
+          <ul>
+            <li><a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps | Google Developers</a></li>
+            <li><a href="https://pwa.rocks" target="_blank">Example PWAs</a></li>
+            <li><a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/index.html?index=..%2F..%2Fcds17#0" target="_blank">Google Codelabs: Your First PWA Tutorial</a></li>
+          </ul>
+        </div>
+        <h4>Thank you for using the Forge!</h4>
       </div>
     </div>
   </div>
