@@ -36,4 +36,5 @@ Enjoy the Forge! 😊
 Submit any [issues](https://github.com/ProgrammersWitAttitudes/pwa_creator/issues) you have, any bug you find or any suggestions you'd like.
 
 ## Contributors
+The Programmers Wit Attitudes
 [Tiffany Yang](https://github.com/tyang1) | [Christopher Washburn](https://github.com/skchristopher) | [Jeff Kang](https://github.com/jkang215) | [Kyle Loftin](https://github.com/KALoftin)
