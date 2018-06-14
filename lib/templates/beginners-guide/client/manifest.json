@@ -1,0 +1,8 @@
+{
+  "short_name": "Beginner-PWA",
+  "name": "Beginner-PWA",
+  "display": "standalone",
+  "start_url": "index.html?launcher=true",
+  "theme_color": "#a040a0",
+  "background_color": "#EEEEEE"
+}
