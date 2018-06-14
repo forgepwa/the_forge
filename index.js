@@ -43,7 +43,7 @@ if (options.help) {
         {
           name: 'logout',
           alias: 'o',
-          description: 'Logs out of Firebase on this computer and clears any caches Firebase tokens',
+          description: 'Logs out of Firebase on this computer and clears any cached Firebase tokens',
         },
         {
           name: 'help',
