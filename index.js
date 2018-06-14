@@ -14,6 +14,7 @@ const optionDefinitions = [
   { name: 'help', alias: 'h', type: Boolean },
   { name: 'redeploy', alias: 'r', type: Boolean },
   { name: 'local', alias: 'l', type: Boolean },
+  { name: 'logout', alias: 'o', type: Boolean },
 ];
 const options = commandLineArgs(optionDefinitions);
 
@@ -21,7 +22,8 @@ const welcomeLogo = (welcomeString) => {
   clear();
   console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
   console.log(welcomeString);
-}
+};
+
 // Help flag entered, print help text
 if (options.help) {
   welcomeLogo('Welcome to the Forge! This is the help prompt. 🔥 🔥 🔥\n');
@@ -40,14 +42,19 @@ if (options.help) {
           description: 'Launches the Forge\'s command line tool to generate a template without hosting it.',
         },
         {
-          name: 'redeploy',
-          alias: 'r',
-          description: 'Launches the Forge\'s command line tool to redeploy an existing Firebase project.',
+          name: 'logout',
+          alias: 'o',
+          description: 'Logs out of Firebase on this computer and clears any caches Firebase tokens',
         },
         {
           name: 'help',
           alias: 'h',
           description: 'Print this usage guide.',
+        },
+        {
+          name: 'redeploy',
+          alias: 'r',
+          description: 'Launches the Forge\'s command line tool to redeploy an existing Firebase project.',
         },
       ],
       tableOptions: {
@@ -73,11 +80,15 @@ if (options.help) {
   const usage = commandLineUsage(sections);
   console.log(usage);
 }
+// Logout flag entered, initiate logout process
+else if (options.logout) {
+  firebase.FBLogout();
+}
 // Redeploy flag entered, initiate redeployment
 else if (options.redeploy) {
   welcomeLogo('Welcome to the Forge! Launching redeployment prompt. 🔥 🔥 🔥\n');
   const run = async () => {
-    firebase.FBLogin();
+    await firebase.FBLogin();
     console.log('Visit https://console.firebase.google.com to view your firebase projects.\n');
     const answers = await inquirer.redeploy();
     const firebaseName = answers['firebase-name'];
@@ -94,15 +105,15 @@ else if (options.local) {
   const run = async () => {
     const answers = await inquirer.askTemplateWithoutDeploy();
     generator.generateTemplate(answers);
-  }
+  };
   run();
 }
 // No options, go to standard prompt
 else {
   welcomeLogo('Welcome to the Forge! Launching code generator and deployment prompt. 🔥 🔥 🔥\n');
   const run = async () => {
-    firebase.FBLogin();
-    console.log('⚠️ Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
+    await firebase.FBLogin();
+    console.log('⚠️  Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
     const answers = await inquirer.askTemplate();
     generator.generateTemplate(answers);
     firebase.useAdd(answers['project-name'], answers['firebase-name']);

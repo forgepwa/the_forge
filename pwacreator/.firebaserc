@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "template-progressive-web-app"
+    "default": "template-progressive-web-app",
+    "y": "awesomepwa"
   }
 }
