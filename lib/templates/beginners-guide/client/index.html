@@ -15,7 +15,7 @@
 <body>
   <div class="welcome">
     <h1>Welcome to the Forge beginner's guide! 🔥</h1>
-  </div><br />
+  </div><br/>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm">
@@ -45,16 +45,23 @@
       </div>
       <div class="col-sm">
         <h3>Navigating the Code Base 🗺</h3>
-        <p>Here is a quick guide to get you familiar with the codebase we just generated for you.</p>
+        <p>Here is a quick guide to get you familiar with what's going on in the browser and codebase we just forged for you.</p>
         <h5>Accessing the developer console</h5>
-        <h5>Service workers in the code</h5>
+        <p>In Chrome, open the developers tools with Cmd + Option + J (Mac) or Ctrl + Shift + J (Windows).</p>
         <h5>Where can I find the service workers in the browser?</h5>
+        <p>Navigate to the "Application" tab in the dev tools. On the left hand side, under the Application sub menu, click on "Service Workers".</p>
+        <p>* Todo: Add image of service worker page *</p>
         <h5>Registering/Unregistering service workers</h5>
+        <p>Click on "Unregister" to remove the service worker that was installed when you loaded this HTML page. Refreshing the page should automatically reinstall the service worker.</p>
+        <h5>Service workers in the code</h5>
+        <p>If you open up the directory we forged for you, you'll see a "client" folder. In that folder, there is a file named "sw.js". This file is your service worker.</p>
         <h5>Seeing your cached files</h5>
+        <p>Back in the Application tab of dev tools, you can find a section labeled "Cache". Click on "Cache Storage" and select "beginners-guide" to see the cached files. For now, there is only one HTML file and one CSS file. Your service workers can cache up to 30 MB of files (depending on your browser)!</p>
         <h5>Clearing the cache</h5>
+        <p>Just under the "Service Workers" on the Application tab, click the "Clear Storage" option. At the bottom, you can click "Clear site data" to both clear all cached files and unregister your service workers.</p>
       </div>
       <div class="col-sm">
-        <h3>How does it work? 🤔</h3>
+        <h3>Try Offline! 🤯</h3>
         <p>Try turning off your WiFi and refreshing the page. Notice that you can still navigate the site. This is because of the service workers in sw.js! :O</p>
         <a href="https://developers.google.com/web/ilt/pwa/tools-for-pwa-developers" target="_blank">Service Worker Cache Information</a>
         <h3>Resources 📚</h3>
@@ -62,6 +69,7 @@
         <ul>
           <li><a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps | Google Developers</a></li>
           <li><a href="https://pwa.rocks" target="_blank">Example PWAs</a></li>
+          <li><a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/index.html?index=..%2F..%2Fcds17#0" target="_blank">Google Codelabs: Your First PWA Tutorial</a></li>
         </ul>
         <p>Thank you for using the Forge!</p>
       </div>
