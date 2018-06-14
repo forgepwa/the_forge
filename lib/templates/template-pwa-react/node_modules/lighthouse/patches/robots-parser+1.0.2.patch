@@ -1,0 +1,54 @@
+patch-package
+--- a/node_modules/robots-parser/Robots.js
++++ b/node_modules/robots-parser/Robots.js
+@@ -1,4 +1,22 @@
+-var libUrl   = require('url');
++
++var getUrlPath;
++var parse;
++if (typeof self !== 'undefined' && self.URL) {
++	// Extra safety for invalid URLs
++	parse = url => {
++		try {
++			return new URL(url);
++		} catch(e) {
++			return null;
++		}
++	};
++  	getUrlPath = parsedUrl => parsedUrl.pathname + parsedUrl.search;
++} else {
++	// Add Fallback for Node 6, which doesn't have require('url').URL
++	parse = require('url').parse;
++	getUrlPath = parsedUrl => parsedUrl.path;
++}
++
+ var punycode = require('punycode');
+
+ /**
+@@ -176,7 +194,7 @@ function isPathAllowed(path, rules) {
+
+
+ function Robots(url, contents) {
+-	this._url = libUrl.parse(url);
++	this._url = parse(url)|| {};
+ 	this._url.port = this._url.port || 80;
+ 	this._url.hostname = punycode.toUnicode(this._url.hostname);
+
+@@ -262,7 +280,7 @@ Robots.prototype.setPreferredHost = function (url) {
+  * @return {boolean?}
+  */
+ Robots.prototype.isAllowed = function (url, ua) {
+-	var parsedUrl = libUrl.parse(url);
++	var parsedUrl = parse(url) || {};
+ 	var userAgent = formatUserAgent(ua || '*');
+
+ 	parsedUrl.port = parsedUrl.port || 80;
+@@ -277,7 +295,7 @@ Robots.prototype.isAllowed = function (url, ua) {
+
+ 	var rules = this._rules[userAgent] || this._rules['*'] || [];
+
+-	return isPathAllowed(parsedUrl.path, rules);
++	return isPathAllowed(getUrlPath(parsedUrl), rules);
+ };
+
+ /**
