@@ -21,7 +21,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preinstall": "npm install -g firebase-tools"
+    "preinstall": "npm install -g firebase-tools",
+    "postinstall": "node postinstall.js"
   },
   "bin": {
     "forge": "./index.js"
