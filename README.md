@@ -25,7 +25,7 @@ Navigate to https://console.firebase.google.com and look for the **Add project**
 <p align='center'>
 <img src='https://i.imgur.com/nox73zP.png' width='300' alt='new-project-firebase-console'>
 </p>
-Follow the instructions to create the new project.
+Follow the instructions to create the new project.<br />
 After creating the project, copy its name for use in the Forge CLI ->
 <p align='center'>
 <img src='https://media.giphy.com/media/2wWZiAVRgNC8JY2QHw/giphy.gif' width='300' alt='copy-project-name'>
