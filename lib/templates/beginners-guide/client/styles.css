@@ -5,13 +5,16 @@ body {
   color: white;
 }
 
+.forge {
+  color: orange;
+}
+
 .welcome {
-  background: rgba(0, 0, 0, 0.7);
   text-align: center;
 }
 
 .container-fluid {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .offline {
