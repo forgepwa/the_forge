@@ -1,5 +1,6 @@
 body {
-  background: url('http://www.darksword-armory.com/wp-content/uploads/2015/10/sword-making-steel.jpg');
+  /* background-image: radial-gradient(red, black); */
+  background: url('./forge-bg.jpg');
   background-size: cover;
   color: white;
 }
