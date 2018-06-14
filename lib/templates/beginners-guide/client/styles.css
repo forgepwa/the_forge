@@ -1,16 +1,19 @@
 body {
-  background: url('http://www.darksword-armory.com/wp-content/uploads/2015/10/sword-making-steel.jpg');
+  background: url("http://www.darksword-armory.com/wp-content/uploads/2015/10/sword-making-steel.jpg");
   background-size: cover;
   color: white;
 }
 
+.forge {
+  color: orange;
+}
+
 .welcome {
-  background: rgba(0, 0, 0, 0.7);
   text-align: center;
 }
 
 .container-fluid {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .offline {
