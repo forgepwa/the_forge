@@ -25,13 +25,15 @@ Navigate to https://console.firebase.google.com and look for the **Add project**
 <p align='center'>
 <img src='https://i.imgur.com/nox73zP.png' width='300' alt='new-project-firebase-console'>
 </p>
-Follow the instructions to create the new project.
+Follow the instructions to create the new project.<br />
 After creating the project, copy its name for use in the Forge CLI ->
 <p align='center'>
 <img src='https://media.giphy.com/media/2wWZiAVRgNC8JY2QHw/giphy.gif' width='300' alt='copy-project-name'>
 </p>
 Enjoy the Forge! 😊
 
-
 ## Issues
-Submit the [issues](https://github.com/ProgrammersWitAttitudes/pwa_creator/issues) if you find any bug or have any suggestion.
+Submit any [issues](https://github.com/ProgrammersWitAttitudes/pwa_creator/issues) you have, any bug you find or any suggestions you'd like.
+
+## Contributors
+[Tiffany Yang](https://github.com/tyang1) | [Christopher Washburn](https://github.com/skchristopher) | [Jeff Kang](https://github.com/jkang215) | [Kyle Loftin](https://github.com/KALoftin)
