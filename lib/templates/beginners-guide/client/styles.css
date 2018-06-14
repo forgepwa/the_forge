@@ -6,15 +6,19 @@ body {
 .background-image {
   position: fixed;
   width: 100%;
-  opacity: .55;
+  opacity: 0.55;
   z-index: -1;
 }
-@media only screen and (max-device-width: 768px) {
+@media only screen and (max-device-width: 767px) {
   .background-image {
-      height: 100%;
-      width: auto;
-      left: -170%;
-      top: -30%;
+    width: auto;
+    left: -140%;
+  }
+}
+@media only screen and (max-device-width: 1024px) {
+  .background-image {
+    height: 100%;
+    width: auto;
   }
 }
 
