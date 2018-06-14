@@ -32,6 +32,8 @@ After creating the project, copy its name for use in the Forge CLI ->
 </p>
 Enjoy the Forge! 😊
 
-
 ## Issues
-Submit the [issues](https://github.com/ProgrammersWitAttitudes/pwa_creator/issues) if you find any bug or have any suggestion.
+Submit any [issues](https://github.com/ProgrammersWitAttitudes/pwa_creator/issues) you have, any bug you find or any suggestions you'd like.
+
+## Contributors
+[Tiffany Yang](https://github.com/tyang1) | [Christopher Washburn](https://github.com/skchristopher) | [Jeff Kang](https://github.com/jkang215) | [Kyle Loftin](https://github.com/KALoftin)
