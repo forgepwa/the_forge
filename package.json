@@ -1,7 +1,7 @@
 {
-  "name": "pwa_creator",
-  "version": "1.0.0",
-  "description": "A quick command line code generator for a Progressive Web App",
+  "name": "the_forge",
+  "version": "0.0.1",
+  "description": "A quick and easy command line interface for generating and hosting a Progressive Web App",
   "main": "index.js",
   "dependencies": {
     "chalk": "^2.4.1",
