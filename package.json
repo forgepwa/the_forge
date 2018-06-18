@@ -1,6 +1,6 @@
 {
   "name": "the_forge",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A quick and easy command line interface for generating and hosting a Progressive Web App",
   "main": "index.js",
   "dependencies": {
@@ -21,7 +21,6 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preinstall": "npm install -g firebase-tools",
     "postinstall": "node postinstall.js"
   },
   "bin": {
