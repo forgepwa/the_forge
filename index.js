@@ -6,6 +6,7 @@ const commandLineArgs = require('command-line-args');
 const commandLineUsage = require('command-line-usage');
 const inquirer = require('./lib/inquirer');
 const firebase = require('./lib/firebase');
+const aws = require('./lib/aws');
 const generator = require('./lib/generator');
 const commands = require('./lib/commands');
 
@@ -13,7 +14,6 @@ const commands = require('./lib/commands');
 const optionDefinitions = [
   { name: 'help', alias: 'h', type: Boolean },
   { name: 'redeploy', alias: 'r', type: Boolean },
-  { name: 'local', alias: 'l', type: Boolean },
   { name: 'logout', alias: 'o', type: Boolean },
 ];
 const options = commandLineArgs(optionDefinitions);
@@ -35,11 +35,6 @@ if (options.help) {
     {
       header: 'Options',
       optionList: [
-        {
-          name: 'local',
-          alias: 'l',
-          description: 'Launches the Forge\'s command line tool to generate a template without hosting it.',
-        },
         {
           name: 'logout',
           alias: 'o',
@@ -82,28 +77,30 @@ if (options.help) {
 // Logout flag entered, initiate logout process
 else if (options.logout) {
   firebase.FBLogout();
+  aws.AWSLogout();
 }
 // Redeploy flag entered, initiate redeployment
 else if (options.redeploy) {
   welcomeLogo('Launching redeployment prompt.');
   const run = async () => {
-    await firebase.FBLogin();
-    console.log('Visit https://console.firebase.google.com to view your firebase projects.\n');
-    const answers = await inquirer.redeploy();
-    const firebaseName = answers['firebase-name'];
-    const projectChoice = answers['project-choice'];
-    console.log(chalk.blue(`Redeploying ${projectChoice}`));
-    commands.changeDir(projectChoice);
-    firebase.useAdd(projectChoice, firebaseName);
-  };
-  run();
-}
-// Local flag entered, generate template without deployment
-else if (options.local) {
-  welcomeLogo('Launching code generator prompt.');
-  const run = async () => {
-    const answers = await inquirer.askTemplateWithoutDeploy();
-    generator.generateTemplate(answers);
+    const host = await inquirer.askHosting(true);
+    if (host.hosting === 'Firebase') {
+      await firebase.FBLogin();
+      console.log('Visit https://console.firebase.google.com to view your firebase projects.\n');
+      const answers = await inquirer.redeployFB();
+      const firebaseName = answers['firebase-name'];
+      const projectChoice = answers['project-choice'];
+      console.log(chalk.blue(`Redeploying ${projectChoice}`));
+      commands.changeDir(projectChoice);
+      firebase.useAdd(projectChoice, firebaseName);
+    } else { // AWS redeploy
+      await aws.AWSLogin();
+      const answers = await inquirer.redeployFB();
+      const projectChoice = answers['project-choice'];
+      console.log(chalk.blue(`Redeploying ${projectChoice}`));
+      commands.changeDir(projectChoice);
+      aws.deploy();
+    }
   };
   run();
 }
@@ -111,11 +108,27 @@ else if (options.local) {
 else {
   welcomeLogo('Launching code generator and deployment prompt.');
   const run = async () => {
-    await firebase.FBLogin();
-    console.log('⚠️  Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
-    const answers = await inquirer.askTemplate();
-    generator.generateTemplate(answers);
-    firebase.useAdd(answers['project-name'], answers['firebase-name']);
+    const host = await inquirer.askHosting(false);
+    if (host.hosting === 'Firebase') {
+      await firebase.FBLogin();
+      console.log('⚠️  Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
+      const answers = await inquirer.askTemplate();
+      generator.generateTemplate(answers);
+      firebase.useAdd(answers['project-name'], answers['firebase-name']);
+    } else if (host.hosting === 'AWS') {
+      await aws.AWSLogin();
+      const answers = await inquirer.askTemplateWithoutDeploy();
+      const projectChoice = answers['project-choice'];
+      console.log(chalk.blue(`Redeploying ${projectChoice}`));
+      commands.changeDir(projectChoice);
+      aws.deploy();
+    } else { // Local deployment
+      const answers = await inquirer.askTemplateWithoutDeploy();
+      generator.generateTemplate(answers);
+      console.log('Generated template for local hosting!');
+      console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:');
+      console.log(chalk.blue('npm start'));
+    }
   };
   run();
 }
