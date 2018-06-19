@@ -30,7 +30,7 @@ if (options.help) {
     {
       header: 'the Forge',
       raw: true,
-      content: 'Generates Progressive Web App code AND hosts it on Firebase.\n\nRun with {bold forge}',
+      content: 'Run with {bold forge} to generate and host a Progressive Web App\n\nOr add option flags below.',
     },
     {
       header: 'Options',
