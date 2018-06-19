@@ -5,7 +5,8 @@ Create *and* deploy PWAs with one simple command.
 
 ## Quick run-down:
 ```sh
-npm install forge -g
+npm install the_forge -g
+npm install firebase-tools -g
 forge
 ```
 If you aren't already logged-in, you will be redirected to log-in to firebase. After authenticating, create a new firebase project.
@@ -37,4 +38,4 @@ Submit any [issues](https://github.com/ProgrammersWitAttitudes/pwa_creator/issue
 
 ## Contributors
 The Programmers Wit Attitudes
-[Tiffany Yang](https://github.com/tyang1) | [Christopher Washburn](https://github.com/skchristopher) | [Jeff Kang](https://github.com/jkang215) | [Kyle Loftin](https://github.com/KALoftin)
+[Tiffany Yang](https://github.com/tyang1) | [Christopher Washburn](https://github.com/SKChristopher) | [Jeff Kang](https://github.com/jkang215) | [Kyle Loftin](https://github.com/KALoftin)
