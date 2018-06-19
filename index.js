@@ -94,7 +94,7 @@ else if (options.redeploy) {
       commands.changeDir(projectChoice);
       firebase.useAdd(projectChoice, firebaseName);
     } else { // AWS redeploy
-      await aws.AWSLogin();
+      await aws.setAWSKeys();
       const answers = await inquirer.redeployFB();
       const projectChoice = answers['project-choice'];
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
@@ -116,7 +116,7 @@ else {
       generator.generateTemplate(answers);
       firebase.useAdd(answers['project-name'], answers['firebase-name']);
     } else if (host.hosting === 'AWS') {
-      await aws.AWSLogin();
+      await aws.setAWSKeys();
       const answers = await inquirer.askTemplateWithoutDeploy();
       const projectChoice = answers['project-choice'];
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
