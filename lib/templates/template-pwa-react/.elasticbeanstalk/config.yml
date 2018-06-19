@@ -1,6 +1,6 @@
 branch-defaults:
   default:
-    environment: null
+    environment: node-express-env
     group_suffix: null
 global:
   application_name: template-pwa-react
