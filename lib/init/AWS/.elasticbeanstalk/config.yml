@@ -3,7 +3,7 @@ branch-defaults:
     environment: null
     group_suffix: null
 global:
-  application_name: template-pwa-react
+  application_name: forge-app
   branch: null
   default_ec2_keyname: null
   default_platform: node.js
