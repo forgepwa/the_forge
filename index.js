@@ -116,10 +116,10 @@ else {
       generator.generateTemplate(answers);
       firebase.useAdd(answers['project-name'], answers['firebase-name']);
     } else if (host.hosting === 'AWS') {
+      console.log('⚠️  Be sure to set up an AWS user in your account\'s IAM Management Console.\n');
       await aws.setAWSKeys();
       const answers = await inquirer.askTemplateWithoutDeploy();
       const projectChoice = answers['project-choice'];
-      console.log(chalk.blue(`Generating ${projectChoice}`));
       generator.generateTemplate(answers);
       aws.create();
     } else { // Local deployment
