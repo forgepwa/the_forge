@@ -113,7 +113,7 @@ else {
       await firebase.FBLogin();
       console.log('⚠️  Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
       const answers = await inquirer.askTemplate();
-      generator.generateTemplate(answers);
+      generator.generateTemplate(answers, host);
       firebase.useAdd(answers['project-name'], answers['firebase-name']);
     } else if (host.hosting === 'AWS') {
       await aws.setAWSKeys();
