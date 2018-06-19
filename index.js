@@ -119,9 +119,9 @@ else {
       await aws.setAWSKeys();
       const answers = await inquirer.askTemplateWithoutDeploy();
       const projectChoice = answers['project-choice'];
-      console.log(chalk.blue(`Redeploying ${projectChoice}`));
-      commands.changeDir(projectChoice);
-      aws.deploy();
+      console.log(chalk.blue(`Generating ${projectChoice}`));
+      generator.generateTemplate(answers);
+      aws.create();
     } else { // Local deployment
       const answers = await inquirer.askTemplateWithoutDeploy();
       generator.generateTemplate(answers);
