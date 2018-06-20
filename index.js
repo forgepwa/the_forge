@@ -114,7 +114,6 @@ else {
       console.log('⚠️  Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
       const answers = await inquirer.askTemplate();
       generator.generateTemplate(answers, host);
-      // firebase.useAdd(answers['project-name'], answers['firebase-name']);
       firebase.deploy(answers['project-name'], answers['firebase-name']);
     } else if (host.hosting === 'AWS') {
       console.log('⚠️  Be sure to set up an AWS user in your account\'s IAM Management Console.\n');
