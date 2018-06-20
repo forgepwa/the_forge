@@ -2,6 +2,7 @@
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
+const CLI = require('clui');
 const commandLineArgs = require('command-line-args');
 const commandLineUsage = require('command-line-usage');
 const inquirer = require('./lib/inquirer');
@@ -9,6 +10,8 @@ const firebase = require('./lib/firebase');
 const aws = require('./lib/aws');
 const generator = require('./lib/generator');
 const commands = require('./lib/commands');
+
+const { Spinner } = CLI;
 
 // Defines commang line option flags
 const optionDefinitions = [
@@ -117,13 +120,12 @@ else {
       firebase.deploy(answers['project-name'], answers['firebase-name']);
     } else if (host.hosting === 'AWS') {
       console.log('⚠️  Be sure to set up an AWS user in your account\'s IAM Management Console.\n');
-      await aws.setAWSKeys();
+      await aws.AWSLogin();
       const answers = await inquirer.askTemplateWithoutFB();
       const projectChoice = answers['project-choice'];
       const projectName = answers['project-name'];
       generator.generateTemplate(answers, host);
-      await aws.createApplication(projectName);
-      await aws.createEnvironment(projectChoice, projectName);
+      await aws.createCLI(projectName);
     } else { // Local deployment
       const answers = await inquirer.askTemplateWithoutFB();
       generator.generateTemplate(answers, host);
