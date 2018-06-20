@@ -118,12 +118,13 @@ else {
     } else if (host.hosting === 'AWS') {
       console.log('⚠️  Be sure to set up an AWS user in your account\'s IAM Management Console.\n');
       await aws.setAWSKeys();
-      const answers = await inquirer.askTemplateWithoutDeploy();
+      const answers = await inquirer.askTemplateWithoutFB();
       const projectChoice = answers['project-choice'];
-      generator.generateTemplate(answers);
-      aws.create();
+      const projectName = answers['project-name'];
+      generator.generateTemplate(answers, host);
+      aws.create(projectChoice, projectName);
     } else { // Local deployment
-      const answers = await inquirer.askTemplateWithoutDeploy();
+      const answers = await inquirer.askTemplateWithoutFB();
       generator.generateTemplate(answers);
       console.log('Generated template for local hosting!');
       console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:');
