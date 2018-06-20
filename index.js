@@ -122,7 +122,8 @@ else {
       const projectChoice = answers['project-choice'];
       const projectName = answers['project-name'];
       generator.generateTemplate(answers, host);
-      aws.create(projectChoice, projectName);
+      await aws.createApplication(projectName);
+      await aws.createEnvironment(projectChoice, projectName);
     } else { // Local deployment
       const answers = await inquirer.askTemplateWithoutFB();
       generator.generateTemplate(answers);
