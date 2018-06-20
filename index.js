@@ -117,13 +117,13 @@ else {
       firebase.useAdd(answers['project-name'], answers['firebase-name']);
     } else if (host.hosting === 'AWS') {
       await aws.setAWSKeys();
-      const answers = await inquirer.askTemplateWithoutDeploy();
+      const answers = await inquirer.askTemplateWithoutFB();
       const projectChoice = answers['project-choice'];
-      console.log(chalk.blue(`Generating ${projectChoice}`));
-      generator.generateTemplate(answers);
-      aws.create();
+      const projectName = answers['project-name'];
+      generator.generateTemplate(answers, host);
+      aws.create(projectChoice, projectName);
     } else { // Local deployment
-      const answers = await inquirer.askTemplateWithoutDeploy();
+      const answers = await inquirer.askTemplateWithoutFB();
       generator.generateTemplate(answers);
       console.log('Generated template for local hosting!');
       console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:');
