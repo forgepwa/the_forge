@@ -114,19 +114,20 @@ else {
       console.log('⚠️  Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
       const answers = await inquirer.askTemplate();
       generator.generateTemplate(answers, host);
-      firebase.useAdd(answers['project-name'], answers['firebase-name']);
+      firebase.deploy(answers['project-name'], answers['firebase-name']);
     } else if (host.hosting === 'AWS') {
       console.log('⚠️  Be sure to set up an AWS user in your account\'s IAM Management Console.\n');
-      await aws.setAWSKeys();
+      // await aws.setAWSKeys();
       const answers = await inquirer.askTemplateWithoutFB();
       const projectChoice = answers['project-choice'];
       const projectName = answers['project-name'];
       generator.generateTemplate(answers, host);
-      await aws.createApplication(projectName);
-      await aws.createEnvironment(projectChoice, projectName);
+      // await aws.createApplication(projectName);
+      await aws.ebCreate(projectName);
+      // await aws.createEnvironment(projectChoice, projectName);
     } else { // Local deployment
       const answers = await inquirer.askTemplateWithoutFB();
-      generator.generateTemplate(answers);
+      generator.generateTemplate(answers, host);
       console.log('Generated template for local hosting!');
       console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:');
       console.log(chalk.blue('npm start'));

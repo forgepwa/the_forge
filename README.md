@@ -6,7 +6,6 @@ Create *and* deploy PWAs with one simple command.
 ## Quick run-down:
 ```sh
 npm install the_forge -g
-npm install firebase-tools -g
 forge
 ```
 If you aren't already logged-in, you will be redirected to log-in to firebase. After authenticating, create a new firebase project.
