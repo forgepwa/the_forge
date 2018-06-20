@@ -94,7 +94,7 @@ else if (options.redeploy) {
       commands.changeDir(projectChoice);
       firebase.useAdd(projectChoice, firebaseName);
     } else { // AWS redeploy
-      await aws.AWSLogin();
+      await aws.setAWSKeys();
       const answers = await inquirer.redeployFB();
       const projectChoice = answers['project-choice'];
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
@@ -113,14 +113,14 @@ else {
       await firebase.FBLogin();
       console.log('⚠️  Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
       const answers = await inquirer.askTemplate();
-      generator.generateTemplate(answers);
+      generator.generateTemplate(answers, host);
       firebase.useAdd(answers['project-name'], answers['firebase-name']);
     } else if (host.hosting === 'AWS') {
-      await aws.AWSLogin();
+      await aws.setAWSKeys();
       const answers = await inquirer.askTemplateWithoutFB();
       const projectChoice = answers['project-choice'];
       const projectName = answers['project-name'];
-      generator.generateTemplate(answers);
+      generator.generateTemplate(answers, host);
       aws.create(projectChoice, projectName);
     } else { // Local deployment
       const answers = await inquirer.askTemplateWithoutFB();
