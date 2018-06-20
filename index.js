@@ -126,7 +126,7 @@ else {
       await aws.createEnvironment(projectChoice, projectName);
     } else { // Local deployment
       const answers = await inquirer.askTemplateWithoutFB();
-      generator.generateTemplate(answers);
+      generator.generateTemplate(answers, host);
       console.log('Generated template for local hosting!');
       console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:');
       console.log(chalk.blue('npm start'));
