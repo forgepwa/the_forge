@@ -93,6 +93,7 @@ else if (options.redeploy) {
       const answers = await inquirer.redeployFB();
       const firebaseName = answers['firebase-name'];
       const projectChoice = answers['project-choice'];
+      console.log("*** PLEASE REFRESH YOUR LOADED PAGE TO RECEIVE UPDATED VERSION ***")
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
       commands.changeDir(projectChoice);
       firebase.deploy(projectChoice, firebaseName);
