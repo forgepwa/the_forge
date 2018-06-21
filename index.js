@@ -19,6 +19,7 @@ const optionDefinitions = [
   { name: 'help', alias: 'h', type: Boolean },
   { name: 'redeploy', alias: 'r', type: Boolean },
   { name: 'logout', alias: 'o', type: Boolean },
+  { name: 'existing', alias: 'e', type: Boolean },
 ];
 const options = commandLineArgs(optionDefinitions);
 
@@ -99,13 +100,24 @@ else if (options.redeploy) {
       firebase.deploy(projectChoice, firebaseName);
     } else { // AWS redeploy
       await aws.AWSLogin();
-      const answers = await inquirer.redeployAWS();
+      const answers = await inquirer.askFolder('What project would you like to redeploy?');
       const projectChoice = answers['project-choice'];
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
       commands.changeDir(projectChoice);
       aws.deploy();
     }
   };
+  run();
+}
+// Existing flag entered, Deploy an existing project
+else if (options.existing) {
+  const run = async () => {
+    const answers = await inquirer.askFolder('What existing project would you like to deploy to AWS?');
+    const projectName = answers['project-choice'];
+    await aws.AWSLogin();
+    generator.generateInits(answers);
+    aws.createCLI(projectName);
+  }
   run();
 }
 // No options, go to standard prompt
