@@ -1,5 +1,5 @@
 {
-  "name": "the_forge",
+  "name": "the-forge",
   "version": "0.0.6",
   "description": "A quick and easy command line interface for generating and hosting a Progressive Web App",
   "main": "index.js",
@@ -32,7 +32,7 @@
     "type": "git",
     "url": "git+https://github.com/ProgrammersWitAttitudes/pwa_creator.git"
   },
-  "author": "",
+  "author": "Tiffany Yang, Christopher Washburn, Jeff Kang, Kyle Loftin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ProgrammersWitAttitudes/pwa_creator/issues"

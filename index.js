@@ -95,7 +95,7 @@ else if (options.redeploy) {
       const projectChoice = answers['project-choice'];
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
       commands.changeDir(projectChoice);
-      firebase.useAdd(projectChoice, firebaseName);
+      firebase.deploy(projectChoice, firebaseName);
     } else { // AWS redeploy
       await aws.setAWSKeys();
       const answers = await inquirer.redeployFB();
