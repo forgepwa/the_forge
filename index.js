@@ -12,6 +12,7 @@ const generator = require('./lib/generator');
 const commands = require('./lib/commands');
 
 const { Spinner } = CLI;
+const status = new Spinner('Forging 🔨, please wait...', ['🔥', '🔥', '🔥', '💥', '💥', '💥']);
 
 // Defines commang line option flags
 const optionDefinitions = [
