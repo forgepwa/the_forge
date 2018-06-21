@@ -97,8 +97,8 @@ else if (options.redeploy) {
       commands.changeDir(projectChoice);
       firebase.useAdd(projectChoice, firebaseName);
     } else { // AWS redeploy
-      await aws.setAWSKeys();
-      const answers = await inquirer.redeployFB();
+      await aws.AWSLogin();
+      const answers = await inquirer.redeployAWS();
       const projectChoice = answers['project-choice'];
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
       commands.changeDir(projectChoice);
@@ -122,7 +122,6 @@ else {
       console.log('⚠️  Be sure to set up an AWS user in your account\'s IAM Management Console.\n');
       await aws.AWSLogin();
       const answers = await inquirer.askTemplateWithoutFB();
-      const projectChoice = answers['project-choice'];
       const projectName = answers['project-name'];
       generator.generateTemplate(answers, host);
       await aws.createCLI(projectName);
@@ -131,6 +130,8 @@ else {
       generator.generateTemplate(answers, host);
       console.log('Generated template for local hosting!');
       console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:');
+      console.log(chalk.blue('npm install'));
+      console.log('then run:');
       console.log(chalk.blue('npm start'));
     }
   };
