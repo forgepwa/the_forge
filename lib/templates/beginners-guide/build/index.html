@@ -93,7 +93,7 @@
         window.addEventListener('load', () => {
           navigator.serviceWorker
             .register('./sw.js')
-            .then(function () { console.log('Service Worker precache'); });
+            .then(function (reg) {reg.update(); console.log('Service Worker precache'); });
         });
       }
     </script> 
