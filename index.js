@@ -12,7 +12,7 @@ const generator = require('./lib/generator');
 const commands = require('./lib/commands');
 
 const { Spinner } = CLI;
-const status = new Spinner('Forging 🔨, please wait...', ['🔥', '🔥', '🔥', '💥', '💥', '💥']);
+const status = new Spinner('Forging 🔨, please wait...', ['🔥', '🔥', '🔥', '🔥', '💥', '💥', '💥', '💥', '⚡', '⚡', '⚡', '⚡', '🌋', '🌋', '🌋', '🌋']);
 
 // Defines commang line option flags
 const optionDefinitions = [
@@ -35,7 +35,7 @@ if (options.help) {
     {
       header: 'the Forge',
       raw: true,
-      content: 'Run with {bold forge} to generate and host a Progressive Web App\n\nOr add option flags below.',
+      content: 'Run with {bold forge} to generate and host a Progressive Web App\n\nOr add one of the option flags below.',
     },
     {
       header: 'Options',
@@ -43,17 +43,22 @@ if (options.help) {
         {
           name: 'logout',
           alias: 'o',
-          description: 'Logs out of Firebase on this computer and clears any cached Firebase tokens',
+          description: 'Logs out of Firebase and AWS on this computer and clears any cached authentication tokens.\n',
         },
         {
           name: 'help',
           alias: 'h',
-          description: 'Print this usage guide.',
+          description: 'Print this usage guide.\n',
         },
         {
           name: 'redeploy',
           alias: 'r',
-          description: 'Launches the Forge\'s command line tool to redeploy an existing Firebase project.',
+          description: 'Launches the Forge\'s command line tool to redeploy an existing project.\n',
+        },
+        {
+          name: 'existing',
+          alias: 'e',
+          description: 'Launches the Forge\'s command line tool to deploy an existing project. NOTE: Project must have npm start script & user must have an AWS account.',
         },
       ],
       tableOptions: {
@@ -141,11 +146,11 @@ else {
     } else { // Local deployment
       const answers = await inquirer.askTemplateWithoutFB();
       generator.generateTemplate(answers, host);
-      console.log('Generated template for local hosting!');
-      console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:');
-      console.log(chalk.blue('npm install'));
-      console.log('then run:');
-      console.log(chalk.blue('npm start'));
+      console.log('Generated template for local hosting! 🔥');
+      console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:\n');
+      console.log(chalk.red('npm install\n'));
+      console.log('Then:\n');
+      console.log(chalk.red('npm start\n'));
     }
   };
   run();
