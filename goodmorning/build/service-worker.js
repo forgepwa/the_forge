@@ -70,6 +70,7 @@ self.addEventListener('activate', function(e) {
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     fetch(event.request).catch(function() {
+      console.log("HERE ARE THE CACHES", caches)
       return caches.match(event.request);
     })
   );
