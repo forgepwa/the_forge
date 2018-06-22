@@ -12,9 +12,9 @@ const generator = require('./lib/generator');
 const commands = require('./lib/commands');
 
 const { Spinner } = CLI;
-const status = new Spinner('Forging 🔨, please wait...', ['🔥', '🔥', '🔥', '🔥', '💥', '💥', '💥', '💥', '⚡', '⚡', '⚡', '⚡', '🌋', '🌋', '🌋', '🌋']);
+// const status = new Spinner('Forging 🔨, please wait...', ['🔥', '🔥', '🔥', '🔥', '💥', '💥', '💥', '💥', '⚡', '⚡', '⚡', '⚡', '🌋', '🌋', '🌋', '🌋']);
 
-// Defines commang line option flags
+// Defines command line option flags
 const optionDefinitions = [
   { name: 'help', alias: 'h', type: Boolean },
   { name: 'redeploy', alias: 'r', type: Boolean },
@@ -96,7 +96,7 @@ else if (options.redeploy) {
     const host = await inquirer.askHosting(true);
     if (host.hosting === 'Firebase') {
       await firebase.FBLogin();
-      console.log('Visit https://console.firebase.google.com to view your firebase projects.\n');
+      console.log('Visit https://console.firebase.google.com to view your Firebase projects.\n');
       const answers = await inquirer.redeployFB();
       const firebaseName = answers['firebase-name'];
       const projectChoice = answers['project-choice'];
