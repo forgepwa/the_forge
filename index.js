@@ -123,6 +123,7 @@ else {
     } else if (host.hosting === 'AWS') {
       console.log('⚠️  Be sure to set up an AWS user in your account\'s IAM Management Console.\n');
       await aws.AWSLogin();
+      await aws.checkLogin();
       const answers = await inquirer.askTemplateWithoutFB();
       const projectName = answers['project-name'];
       await generator.generateTemplate(answers, host);
