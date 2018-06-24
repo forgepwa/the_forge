@@ -17,9 +17,9 @@ const { Spinner } = CLI;
 // Defines command line option flags
 const optionDefinitions = [
   { name: 'help', alias: 'h', type: Boolean },
+  { name: 'init', alias: 'i', type: Boolean },
   { name: 'redeploy', alias: 'r', type: Boolean },
   { name: 'logout', alias: 'o', type: Boolean },
-  { name: 'existing', alias: 'e', type: Boolean },
 ];
 const options = commandLineArgs(optionDefinitions);
 
@@ -41,14 +41,14 @@ if (options.help) {
       header: 'Options',
       optionList: [
         {
-          name: 'logout',
-          alias: 'o',
-          description: 'Logs out of Firebase and AWS on this computer and clears any cached authentication tokens.\n',
-        },
-        {
           name: 'help',
           alias: 'h',
           description: 'Print this usage guide.\n',
+        },
+        {
+          name: 'init',
+          alias: 'i',
+          description: `Launches the Forge's command line tool to deploy an existing project. ${chalk.yellow('NOTE')}: Project must have npm start script & user must have an AWS account.`,
         },
         {
           name: 'redeploy',
@@ -56,9 +56,9 @@ if (options.help) {
           description: 'Launches the Forge\'s command line tool to redeploy an existing project.\n',
         },
         {
-          name: 'existing',
-          alias: 'e',
-          description: 'Launches the Forge\'s command line tool to deploy an existing project. NOTE: Project must have npm start script & user must have an AWS account.',
+          name: 'logout',
+          alias: 'o',
+          description: 'Logs out of Firebase and AWS on this computer and clears any cached authentication tokens.\n',
         },
       ],
       tableOptions: {
@@ -97,17 +97,14 @@ else if (options.redeploy) {
     if (host.hosting === 'Firebase') {
       await firebase.FBLogin();
       console.log('Visit https://console.firebase.google.com to view your Firebase projects.\n');
-      const answers = await inquirer.redeployFB();
-      const firebaseName = answers['firebase-name'];
-      const projectChoice = answers['project-choice'];
-      console.log("*** PLEASE REFRESH YOUR LOADED PAGE TO RECEIVE UPDATED VERSION ***")
+      const { firebaseName, projectChoice } = await inquirer.redeployFB();
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
       commands.changeDir(projectChoice);
-      firebase.deploy(projectChoice, firebaseName);
+      firebase.deploy(firebaseName, projectChoice);
+      console.log('*** Please refresh your loaded page to see your updates ***');
     } else { // AWS redeploy
       await aws.AWSLogin();
-      const answers = await inquirer.askFolder('What project would you like to redeploy?');
-      const projectChoice = answers['project-choice'];
+      const { projectChoice } = await inquirer.askFolder('What project would you like to redeploy?');
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
       commands.changeDir(projectChoice);
       aws.deploy();
@@ -115,15 +112,14 @@ else if (options.redeploy) {
   };
   run();
 }
-// Existing flag entered, Deploy an existing project
-else if (options.existing) {
+// Init flag entered, Deploy an existing project
+else if (options.init) {
   const run = async () => {
-    const answers = await inquirer.askFolder('What existing project would you like to deploy to AWS?');
-    const projectName = answers['project-choice'];
+    const { projectChoice } = await inquirer.askFolder('What existing project would you like to deploy to AWS?');
     await aws.AWSLogin();
-    generator.generateInits(answers);
-    aws.createCLI(projectName);
-  }
+    await generator.generateInits(projectChoice);
+    aws.createCLI(projectChoice);
+  };
   run();
 }
 // No options, go to standard prompt
@@ -134,24 +130,23 @@ else {
     if (host.hosting === 'Firebase') {
       await firebase.FBLogin();
       console.log('⚠️  Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
-      const answers = await inquirer.askTemplate();
-      generator.generateTemplate(answers, host);
-      firebase.deploy(answers['project-name'], answers['firebase-name']);
+      const { firebaseName, projectName, projectChoice } = await inquirer.askTemplateFB();
+      generator.generateTemplate(projectName, projectChoice, host.hosting);
+      firebase.deploy(firebaseName, projectName);
     } else if (host.hosting === 'AWS') {
-      console.log('⚠️  Be sure to set up an AWS user in your account\'s IAM Management Console.\n');
       await aws.AWSLogin();
-      const answers = await inquirer.askTemplateWithoutFB();
-      const projectName = answers['project-name'];
-      await generator.generateTemplate(answers, host);
+      const { projectName, projectChoice } = await inquirer.askTemplate();
+      generator.generateTemplate(projectName, projectChoice, host.hosting);
       await aws.createCLI(projectName);
     } else { // Local deployment
-      const answers = await inquirer.askTemplateWithoutFB();
-      generator.generateTemplate(answers, host);
+      const { projectName, projectChoice } = await inquirer.askTemplate();
+      generator.generateTemplate(projectName, projectChoice, host.hosting);
       console.log('Generated template for local hosting! 🔥');
       console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:\n');
       console.log(chalk.red('npm install\n'));
       console.log('Then:\n');
       console.log(chalk.red('npm start\n'));
+      console.log('After your server starts up, you can go to http://localhost:8081 to see your PWA!');
     }
   };
   run();
