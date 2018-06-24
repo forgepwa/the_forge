@@ -2,7 +2,6 @@
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
-const CLI = require('clui');
 const commandLineArgs = require('command-line-args');
 const commandLineUsage = require('command-line-usage');
 const inquirer = require('./lib/inquirer');
@@ -10,9 +9,6 @@ const firebase = require('./lib/firebase');
 const aws = require('./lib/aws');
 const generator = require('./lib/generator');
 const commands = require('./lib/commands');
-
-const { Spinner } = CLI;
-// const status = new Spinner('Forging 🔨, please wait...', ['🔥', '🔥', '🔥', '🔥', '💥', '💥', '💥', '💥', '⚡', '⚡', '⚡', '⚡', '🌋', '🌋', '🌋', '🌋']);
 
 // Defines command line option flags
 const optionDefinitions = [
@@ -27,9 +23,9 @@ const welcomeLogo = (welcomeString) => {
   clear();
   console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
   console.log(`Welcome to the Forge! ${welcomeString} 🔥 🔥 🔥\n`);
-}
-// Help flag entered, print help text
-if (options.help) {
+};
+
+if (options.help) { // Help flag entered, print help text
   welcomeLogo('This is the help prompt.');
   const sections = [
     {
@@ -94,14 +90,10 @@ if (options.help) {
   ];
   const usage = commandLineUsage(sections);
   console.log(usage);
-}
-// Logout flag entered, initiate logout process
-else if (options.logout) {
+} else if (options.logout) { // Logout flag entered, initiate logout process
   firebase.FBLogout();
   aws.AWSLogout();
-}
-// Redeploy flag entered, initiate redeployment
-else if (options.redeploy) {
+} else if (options.redeploy) { // Redeploy flag entered, initiate redeployment
   welcomeLogo('Launching redeployment prompt.');
   const run = async () => {
     const host = await inquirer.askHosting(true);
@@ -122,9 +114,7 @@ else if (options.redeploy) {
     }
   };
   run();
-}
-// Init flag entered, Deploy an existing project
-else if (options.init) {
+} else if (options.init) { // Init flag entered, Deploy an existing project
   const run = async () => {
     const { projectChoice } = await inquirer.askFolder('What existing project would you like to deploy to AWS?');
     await aws.AWSLogin();
@@ -132,9 +122,7 @@ else if (options.init) {
     aws.createCLI(projectChoice);
   };
   run();
-}
-// No options, go to standard prompt
-else {
+} else { // No options, go to standard prompt
   welcomeLogo('Launching code generator and deployment prompt.');
   const run = async () => {
     const host = await inquirer.askHosting(false);
