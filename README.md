@@ -36,9 +36,25 @@ After creating the project, copy its name for use in the Forge CLI ->
 </p>
 Enjoy the Forge! 😊
 
+## How to use the AWS deployment feature:
+Before you choose AWS as your deployment method, install the elastic beanstalk command line interface.
+```sh
+brew install awsebcli
+```
+Log in to your [AWS Management Console](https://aws.amazon.com/console/).
+Click on Services and search for [IAM](https://console.aws.amazon.com/iam/home).
+Click Users and then add a user.
+Enter a name and select the "Programmatic access" box, then hit Next.
+Select "Attach existing policies directly" and check the box for "AdministratorAccess", then hit Next again.
+Click "Create User" and wait a few seconds.
+You should now see your Access key ID and have the option to view the Secret access key, download these with the "Download .csv" button and have them ready for inputing into the Forge.
+You are now ready to use the Forge to deploy a project to AWS! 👌
+
+Enjoy the Forge! 😊
+
+
 ## Issues / Feedback
 Submit any [issues](https://github.com/ProgrammersWitAttitudes/pwa_creator/issues) you have, any bug you find or any suggestions you'd like.
 
 ## Contributors
-The Programmers Wit Attitudes
 [Tiffany Yang](https://github.com/tyang1) | [Christopher Washburn](https://github.com/SKChristopher) | [Jeff Kang](https://github.com/jkang215) | [Kyle Loftin](https://github.com/KALoftin)
