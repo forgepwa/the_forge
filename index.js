@@ -20,6 +20,7 @@ const optionDefinitions = [
 ];
 const options = commandLineArgs(optionDefinitions);
 
+// Print welcome banner and welcome string
 const welcomeLogo = (welcomeString) => {
   clear();
   console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
@@ -45,7 +46,7 @@ if (options.help) { // Help flag entered, print help text
         {
           name: 'init',
           alias: 'i',
-          description: `Launches the Forge's command line tool to deploy an existing project. ${chalk.yellow('NOTE')}: Project must have npm start script & user must have an AWS account.`,
+          description: `Launches the Forge's command line tool to deploy an existing project to AWS. ${chalk.yellow('NOTE')}: Project must have npm start script & user must have an AWS account.`,
         },
         {
           name: 'redeploy',
@@ -79,11 +80,10 @@ if (options.help) { // Help flag entered, print help text
       content: [
         'Here is a summary of the available templates you can generate with the Forge:',
         '',
-        '  • {bold beginners-guide}: A very simple PWA that contains a basic webpage with HTML and CSS. Generate this template to read a handy guide through what PWA\'s are and how to navigate the codebase.',
-        '  • {bold starter-pwa}: A more functional PWA that lets you store a message and cache it with service workers. Try going offline and refreshing this PWA to see service workers in action.',
-        '  • {bold react-pwa}: A barebones React enabled PWA. This is for developers looking for a quick launching point on a React PWA. Contains a ready-to-go webpack for easy building and redeployment.',
-        '',
-      ]
+        '  • {bold beginners-guide}: A very simple PWA that contains a basic webpage with HTML and CSS. Generate this template to read a handy guide through what PWA\'s are and how to navigate the codebase.\n',
+        '  • {bold starter-pwa}: A more functional PWA that lets you store a message and cache it with service workers. Try going offline and refreshing this PWA to see service workers in action.\n',
+        '  • {bold react-pwa}: A barebones React enabled PWA. This is for developers looking for a quick launching point on a React PWA. Contains a ready-to-go webpack for easy building and redeployment.\n',
+      ],
     },
     {
       content: 'Project home 🏡 : {underline https://github.com/ProgrammersWitAttitudes/pwa_creator}',
@@ -92,8 +92,12 @@ if (options.help) { // Help flag entered, print help text
   const usage = commandLineUsage(sections);
   console.log(usage);
 } else if (options.logout) { // Logout flag entered, initiate logout process
-  firebase.FBLogout();
-  aws.AWSLogout();
+  try {
+    aws.AWSLogout();
+    firebase.FBLogout();
+  } catch (err) {
+    console.log(err);
+  }
 } else if (options.redeploy) { // Redeploy flag entered, initiate redeployment
   welcomeLogo('Launching redeployment prompt.');
   const run = async () => {
@@ -114,15 +118,25 @@ if (options.help) { // Help flag entered, print help text
       aws.deploy();
     }
   };
-  run();
+  try {
+    run();
+  } catch (err) {
+    console.log(err);
+  }
 } else if (options.init) { // Init flag entered, Deploy an existing project
+  welcomeLogo('Launching AWS deployment prompt.');
+  console.log('For successful deployment to AWS, please make sure your project has a npm start script set up.\n');
   const run = async () => {
     const { projectChoice } = await inquirer.askFolder('What existing project would you like to deploy to AWS?');
     await aws.AWSLogin();
     await generator.generateInits(projectChoice);
     aws.createCLI(projectChoice);
   };
-  run();
+  try {
+    run();
+  } catch (err) {
+    console.log(err);
+  }
 } else { // No options, go to standard prompt
   welcomeLogo('Launching code generator and deployment prompt.');
   const run = async () => {
@@ -143,11 +157,16 @@ if (options.help) { // Help flag entered, print help text
       generator.generateTemplate(projectName, projectChoice, host.hosting);
       console.log('Generated template for local hosting! 🔥');
       console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:\n');
-      console.log(chalk.red('npm install\n'));
+      console.log(chalk.green('npm install\n'));
       console.log('Then:\n');
-      console.log(chalk.red('npm start\n'));
+      console.log(chalk.green('npm start\n'));
       console.log('After your server starts up, you can go to http://localhost:8081 to see your PWA!');
+      console.log('If you\'d like to host the project we forged for you on an AWS account, run forge -i');
     }
   };
-  run();
+  try {
+    run();
+  } catch (err) {
+    console.log(err);
+  }
 }
