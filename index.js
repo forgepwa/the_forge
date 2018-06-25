@@ -19,6 +19,7 @@ const optionDefinitions = [
 ];
 const options = commandLineArgs(optionDefinitions);
 
+// Print welcome banner and welcome string
 const welcomeLogo = (welcomeString) => {
   clear();
   console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
@@ -44,7 +45,7 @@ if (options.help) { // Help flag entered, print help text
         {
           name: 'init',
           alias: 'i',
-          description: `Launches the Forge's command line tool to deploy an existing project. ${chalk.yellow('NOTE')}: Project must have npm start script & user must have an AWS account.\n`,
+          description: `Launches the Forge's command line tool to deploy an existing project to AWS. ${chalk.yellow('NOTE')}: Project must have npm start script & user must have an AWS account.`,
         },
         {
           name: 'redeploy',
@@ -82,7 +83,7 @@ if (options.help) { // Help flag entered, print help text
         '  • {bold starter-pwa}: A more functional PWA that lets you store a message and cache it with service workers. Try going offline and refreshing this PWA to see service workers in action.',
         '  • {bold react-pwa}: A barebones React enabled PWA. This is for developers looking for a quick launching point on a React PWA. Contains a ready-to-go webpack for easy building and redeployment.',
         '',
-      ]
+      ],
     },
     {
       content: 'Project home 🏡 : {underline https://github.com/ProgrammersWitAttitudes/pwa_creator}',
