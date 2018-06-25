@@ -15,7 +15,7 @@ Answer the questions to select what type of PWA you'd like to create and name yo
 Everything will be created and deployed for you! Enjoy.
 
 <p align='center'>
-<img src=https://media.giphy.com/media/69mUfrFKghjqxlhLd5/giphy.gif width='600' alt='forge'>
+<img src=https://media.giphy.com/media/2YnBCupyqeqIgwP9yd/giphy.gif width='600' alt='forge'>
 </p>
 
 ### Start smithing your PWA immediately.
