@@ -5,6 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.259.1",
+    "bdd-stdin": "^0.2.0",
+    "bluebird": "^3.5.1",
     "chalk": "^2.4.1",
     "clear": "^0.1.0",
     "clui": "^0.3.6",
@@ -19,7 +21,12 @@
     "node-cmd": "^3.0.0",
     "opn": "^5.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "expect": "^23.1.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.1.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "node postinstall.js"
