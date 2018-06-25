@@ -9,7 +9,6 @@ const firebase = require('./lib/firebase');
 const aws = require('./lib/aws');
 const generator = require('./lib/generator');
 const commands = require('./lib/commands');
-const cmd = require("node-cmd");
 
 // Defines command line option flags
 const optionDefinitions = [
