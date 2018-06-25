@@ -3,7 +3,9 @@
 
 Create *and* deploy PWAs with one simple command.
 
-<img src=https://i.imgur.com/tl4Niq5.png width='600' alt='help screen'>
+<p align='center'>
+<img src=https://i.imgur.com/Bch4gAK.png width='600' alt='help screen'>
+</p>
 
 ## Quick run-down:
 ```sh

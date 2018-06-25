@@ -44,7 +44,7 @@ if (options.help) { // Help flag entered, print help text
         {
           name: 'init',
           alias: 'i',
-          description: `Launches the Forge's command line tool to deploy an existing project. ${chalk.yellow('NOTE')}: Project must have npm start script & user must have an AWS account.`,
+          description: `Launches the Forge's command line tool to deploy an existing project. ${chalk.yellow('NOTE')}: Project must have npm start script & user must have an AWS account.\n`,
         },
         {
           name: 'redeploy',
