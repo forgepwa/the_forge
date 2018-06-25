@@ -4,7 +4,7 @@ const client = require("firebase-tools");
 const gen = require("../lib/generator.js");
 const bddStdin = require('bdd-stdin');
 //when duplicate project name, should reprompt user to enter new project name
-
+//
 describe("#duplicate project name", () => {
   let host = { hosting: "Firebase" };
   const answers = [

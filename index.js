@@ -2,7 +2,6 @@
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
-const CLI = require('clui');
 const commandLineArgs = require('command-line-args');
 const commandLineUsage = require('command-line-usage');
 const inquirer = require('./lib/inquirer');
@@ -12,15 +11,12 @@ const generator = require('./lib/generator');
 const commands = require('./lib/commands');
 const cmd = require("node-cmd");
 
-const { Spinner } = CLI;
-// const status = new Spinner('Forging 🔨, please wait...', ['🔥', '🔥', '🔥', '🔥', '💥', '💥', '💥', '💥', '⚡', '⚡', '⚡', '⚡', '🌋', '🌋', '🌋', '🌋']);
-
 // Defines command line option flags
 const optionDefinitions = [
   { name: 'help', alias: 'h', type: Boolean },
+  { name: 'init', alias: 'i', type: Boolean },
   { name: 'redeploy', alias: 'r', type: Boolean },
   { name: 'logout', alias: 'o', type: Boolean },
-  { name: 'existing', alias: 'e', type: Boolean },
 ];
 const options = commandLineArgs(optionDefinitions);
 
@@ -28,9 +24,9 @@ const welcomeLogo = (welcomeString) => {
   clear();
   console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
   console.log(`Welcome to the Forge! ${welcomeString} 🔥 🔥 🔥\n`);
-}
-// Help flag entered, print help text
-if (options.help) {
+};
+
+if (options.help) { // Help flag entered, print help text
   welcomeLogo('This is the help prompt.');
   const sections = [
     {
@@ -42,14 +38,14 @@ if (options.help) {
       header: 'Options',
       optionList: [
         {
-          name: 'logout',
-          alias: 'o',
-          description: 'Logs out of Firebase and AWS on this computer and clears any cached authentication tokens.\n',
-        },
-        {
           name: 'help',
           alias: 'h',
           description: 'Print this usage guide.\n',
+        },
+        {
+          name: 'init',
+          alias: 'i',
+          description: `Launches the Forge's command line tool to deploy an existing project. ${chalk.yellow('NOTE')}: Project must have npm start script & user must have an AWS account.`,
         },
         {
           name: 'redeploy',
@@ -57,9 +53,9 @@ if (options.help) {
           description: 'Launches the Forge\'s command line tool to redeploy an existing project.\n',
         },
         {
-          name: 'existing',
-          alias: 'e',
-          description: 'Launches the Forge\'s command line tool to deploy an existing project. NOTE: Project must have npm start script & user must have an AWS account.',
+          name: 'logout',
+          alias: 'o',
+          description: 'Logs out of Firebase and AWS on this computer and clears any cached authentication tokens.\n',
         },
       ],
       tableOptions: {
@@ -79,80 +75,78 @@ if (options.help) {
       },
     },
     {
+      header: 'Templates',
+      content: [
+        'Here is a summary of the available templates you can generate with the Forge:',
+        '',
+        '  • {bold beginners-guide}: A very simple PWA that contains a basic webpage with HTML and CSS. Generate this template to read a handy guide through what PWA\'s are and how to navigate the codebase.',
+        '  • {bold starter-pwa}: A more functional PWA that lets you store a message and cache it with service workers. Try going offline and refreshing this PWA to see service workers in action.',
+        '  • {bold react-pwa}: A barebones React enabled PWA. This is for developers looking for a quick launching point on a React PWA. Contains a ready-to-go webpack for easy building and redeployment.',
+        '',
+      ]
+    },
+    {
       content: 'Project home 🏡 : {underline https://github.com/ProgrammersWitAttitudes/pwa_creator}',
     },
   ];
   const usage = commandLineUsage(sections);
   console.log(usage);
-}
-// Logout flag entered, initiate logout process
-else if (options.logout) {
+} else if (options.logout) { // Logout flag entered, initiate logout process
   firebase.FBLogout();
   aws.AWSLogout();
-}
-// Redeploy flag entered, initiate redeployment
-else if (options.redeploy) {
+} else if (options.redeploy) { // Redeploy flag entered, initiate redeployment
   welcomeLogo('Launching redeployment prompt.');
   const run = async () => {
     const host = await inquirer.askHosting(true);
     if (host.hosting === 'Firebase') {
       await firebase.FBLogin();
       console.log('Visit https://console.firebase.google.com to view your Firebase projects.\n');
-      const answers = await inquirer.redeployFB();
-      const firebaseName = answers['firebase-name'];
-      const projectChoice = answers['project-choice'];
-      console.log("*** PLEASE REFRESH YOUR LOADED PAGE TO RECEIVE UPDATED VERSION ***")
+      const { firebaseName, projectChoice } = await inquirer.redeployFB();
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
       commands.changeDir(projectChoice);
-      firebase.deploy(projectChoice, firebaseName);
+      firebase.deploy(firebaseName, projectChoice);
+      console.log('*** Please refresh your loaded page to see your updates ***');
     } else { // AWS redeploy
       await aws.AWSLogin();
-      const answers = await inquirer.askFolder('What project would you like to redeploy?');
-      const projectChoice = answers['project-choice'];
+      const { projectChoice } = await inquirer.askFolder('What project would you like to redeploy?');
       console.log(chalk.blue(`Redeploying ${projectChoice}`));
       commands.changeDir(projectChoice);
       aws.deploy();
     }
   };
   run();
-}
-// Existing flag entered, Deploy an existing project
-else if (options.existing) {
+} else if (options.init) { // Init flag entered, Deploy an existing project
   const run = async () => {
-    const answers = await inquirer.askFolder('What existing project would you like to deploy to AWS?');
-    const projectName = answers['project-choice'];
+    const { projectChoice } = await inquirer.askFolder('What existing project would you like to deploy to AWS?');
     await aws.AWSLogin();
-    generator.generateInits(answers);
-    aws.createCLI(projectName);
-  }
+    await generator.generateInits(projectChoice);
+    aws.createCLI(projectChoice);
+  };
   run();
-}
-// No options, go to standard prompt
-else {
+} else { // No options, go to standard prompt
   welcomeLogo('Launching code generator and deployment prompt.');
   const run = async () => {
     const host = await inquirer.askHosting(false);
     if (host.hosting === 'Firebase') {
       await firebase.FBLogin();
       console.log('⚠️  Visit https://console.firebase.google.com to create a firebase project (essential to successful deployment).\n');
-      const answers = await inquirer.askTemplate();
-      if( generator.generateTemplate(answers, host) === false) { console.log("HERE AT THE INDEX.JS"); answers = await inquirer.askTemplate();}
-      else{firebase.deploy(answers['project-name'], answers['firebase-name']);}
+      const { firebaseName, projectName, projectChoice } = await inquirer.askTemplateFB();
+      generator.generateTemplate(projectName, projectChoice, host.hosting);
+      firebase.deploy(firebaseName, projectName);
     } else if (host.hosting === 'AWS') {
-      console.log('⚠️  Be sure to set up an AWS user in your account\'s IAM Management Console.\n');
       await aws.AWSLogin();
-      const answers = await inquirer.askTemplateWithoutFB();
-      const projectName = answers['project-name'];
-      await generator.generateTemplate(answers, host);
+      const { projectName, projectChoice } = await inquirer.askTemplate();
+      generator.generateTemplate(projectName, projectChoice, host.hosting);
       await aws.createCLI(projectName);
     } else { // Local deployment
-      const answers = await inquirer.askTemplateWithoutFB();
-      generator.generateTemplate(answers, host);
+      const { projectName, projectChoice } = await inquirer.askTemplate();
+      generator.generateTemplate(projectName, projectChoice, host.hosting);
       console.log('Generated template for local hosting! 🔥');
       console.log('To run on a localhost, navigate to the project we created for you in the terminal and run:\n');
       console.log(chalk.red('npm install\n'));
       console.log('Then:\n');
       console.log(chalk.red('npm start\n'));
+      console.log('After your server starts up, you can go to http://localhost:8081 to see your PWA!');
     }
   };
   run();

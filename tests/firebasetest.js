@@ -10,8 +10,3 @@ describe('#FBLogin', () => {
     })
 })
 })
-
-describe('#duplicate project name', () => {
-    let projectDirName = "test";
-    fb.deploy("test")
-})
