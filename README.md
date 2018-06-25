@@ -41,13 +41,14 @@ Before you choose AWS as your deployment method, install the elastic beanstalk c
 ```sh
 brew install awsebcli
 ```
-Log in to your [AWS Management Console](https://aws.amazon.com/console/).
-Click on Services and search for [IAM](https://console.aws.amazon.com/iam/home).
-Click Users and then add a user.
-Enter a name and select the "Programmatic access" box, then hit Next.
-Select "Attach existing policies directly" and check the box for "AdministratorAccess", then hit Next again.
-Click "Create User" and wait a few seconds.
-You should now see your Access key ID and have the option to view the Secret access key, download these with the "Download .csv" button and have them ready for inputing into the Forge.
+1. Log in to your [AWS Management Console](https://aws.amazon.com/console/).<br />
+2. Click on Services and search for [IAM](https://console.aws.amazon.com/iam/home).<br />
+3. Click Users and then add a user.<br />
+4. Enter a name and select the "Programmatic access" box, then hit Next.<br />
+5. Select "Attach existing policies directly" and check the box for "AdministratorAccess", then hit Next again.<br />
+6. Click "Create User" and wait a few seconds.<br />
+7. You should now see your Access key ID and have the option to view the Secret access key, download these with the "Download .csv" button and have them ready for inputing into the Forge.
+
 You are now ready to use the Forge to deploy a project to AWS! 👌
 
 Enjoy the Forge! 😊
