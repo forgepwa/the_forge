@@ -1,6 +1,6 @@
 {
   "name": "the-forge",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A quick and easy command line interface for generating and hosting a Progressive Web App",
   "main": "index.js",
   "dependencies": {
