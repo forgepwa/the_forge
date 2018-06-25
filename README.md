@@ -15,7 +15,7 @@ Answer the questions to select what type of PWA you'd like to create and name yo
 Everything will be created and deployed for you! Enjoy.
 
 <p align='center'>
-<img src=https://media.giphy.com/media/t7DPPwPtr4Rf4su247/giphy.gif width='600' alt='forge'>
+<img src=https://media.giphy.com/media/69mUfrFKghjqxlhLd5/giphy.gif width='600' alt='forge'>
 </p>
 
 ### Start smithing your PWA immediately.
@@ -30,7 +30,6 @@ Navigate to https://console.firebase.google.com and look for the **Add project**
 Follow the instructions to create the new project.<br />
 After creating the project, copy its name for use in the Forge CLI ->
 <p align='center'>
-<!-- <img src='https://media.giphy.com/media/2wWZiAVRgNC8JY2QHw/giphy.gif' width='300' alt='copy-project-name'> -->
 <img src=https://media.giphy.com/media/58FObrPmgNqvLYJayZ/giphy.gif width='300' alt='copy-project-name'>
 </p>
 Enjoy the Forge! 😊
