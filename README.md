@@ -3,6 +3,8 @@
 
 Create *and* deploy PWAs with one simple command.
 
+<img src=https://i.imgur.com/tl4Niq5.png width='600' alt='help screen'>
+
 ## Quick run-down:
 ```sh
 npm install the_forge -g
