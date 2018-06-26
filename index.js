@@ -45,7 +45,7 @@ if (options.help) { // Help flag entered, print help text
         {
           name: 'init',
           alias: 'i',
-          description: `Launches the Forge's command line tool to deploy an existing project to AWS. ${chalk.yellow('NOTE')}: Project must have npm start script & user must have an AWS account.`,
+          description: `Launches the Forge's command line tool to deploy an existing project to AWS. ${chalk.yellow('NOTE')}: Project must have npm start script & user must have an AWS account.\n`,
         },
         {
           name: 'redeploy',
@@ -159,8 +159,8 @@ if (options.help) { // Help flag entered, print help text
       console.log(chalk.green('npm install\n'));
       console.log('Then:\n');
       console.log(chalk.green('npm start\n'));
-      console.log('After your server starts up, you can go to http://localhost:8081 to see your PWA!');
-      console.log('If you\'d like to host the project we forged for you on an AWS account, run forge -i');
+      console.log('After your server starts up, you can go to http://localhost:8081 to see your PWA!\n');
+      console.log('If you\'d like to host the project we forged for you on an AWS account, run forge -i\n');
     }
   };
   try {
