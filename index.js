@@ -85,7 +85,7 @@ if (options.help) { // Help flag entered, print help text
       ],
     },
     {
-      content: 'Project home 🏡 : {underline https://github.com/ProgrammersWitAttitudes/pwa_creator}',
+      content: 'Project home 🏡 : {underline https://forgepwa.com}\n\n Project repository: {underline https://github.com/forgepwa/the_forge}\n',
     },
   ];
   const usage = commandLineUsage(sections);
