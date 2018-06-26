@@ -1,18 +1,19 @@
 # the Forge
 "**Where code is smithed.**"
 
-Create *and* deploy PWAs with one simple command.
+Create *and* deploy Progressive Web Apps with one simple command.
 
 <p align='center'>
 <img src=https://i.imgur.com/Bch4gAK.png width='600' alt='help screen'>
 </p>
 
 ## Getting Started:
+Be sure to install the Forge with the global -g flag:
 ```sh
 npm install the_forge -g
 forge
 ```
-When creating a project, you will be asked how you would like to host your project. If you aren't already logged-in, you will be redirected to log-in to Firebase or AWS.<br /><br />
+When creating a project, you will be asked how you would like to host it. If you aren't already logged-in, you will be directed to log-in to Firebase or AWS.<br /><br />
 After authenticating, answer the questions to select what type of PWA you'd like to create and name your new project directory.<br /><br />
 Everything will be generated and deployed for you!<br />
 
@@ -58,7 +59,8 @@ Enjoy the Forge! 😊
 
 
 ## Issues / Feedback
-Submit [issues](https://github.com/forgepwa/the_forge/issues) here. Tell us about any bugs you find or any features you'd like to suggest!
+Submit issues [here](https://github.com/forgepwa/the_forge/issues). Tell us about any bugs you find or any features you'd like to suggest!<br />
+[Github](https://github.com/forgepwa/the_forge) | [NPM](https://npmjs.com/package/the_forge)
 
 ## Contributors
 [Tiffany Yang](https://github.com/tyang1) | [Christopher Washburn](https://github.com/SKChristopher) | [Jeff Kang](https://github.com/jkang215) | [Kyle Loftin](https://github.com/KALoftin)
