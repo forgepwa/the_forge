@@ -22,7 +22,7 @@ const options = commandLineArgs(optionDefinitions);
 // Print welcome banner and welcome string
 const welcomeLogo = (welcomeString) => {
   clear();
-  console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
+  console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ANSI shadow', horizontalLayout: 'full' })));
   console.log(`Welcome to the Forge! ${welcomeString} 🔥 🔥 🔥\n`);
 };
 
