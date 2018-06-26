@@ -60,7 +60,7 @@ Enjoy the Forge! 😊
 
 ## Issues / Feedback
 Submit issues [here](https://github.com/forgepwa/the_forge/issues). Tell us about any bugs you find or any features you'd like to suggest!<br />
-[Github](https://github.com/forgepwa/the_forge) | [NPM](https://npmjs.com/package/the_forge)
+[Website](https://forgepwa.com) | [Github](https://github.com/forgepwa/the_forge) | [NPM](https://npmjs.com/package/the_forge)
 
 ## Contributors
 [Tiffany Yang](https://github.com/tyang1) | [Christopher Washburn](https://github.com/SKChristopher) | [Jeff Kang](https://github.com/jkang215) | [Kyle Loftin](https://github.com/KALoftin)
