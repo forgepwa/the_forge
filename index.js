@@ -22,7 +22,7 @@ const options = commandLineArgs(optionDefinitions);
 // Print welcome banner and welcome string
 const welcomeLogo = (welcomeString) => {
   clear();
-  console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ansi shadow', horizontalLayout: 'full' })));
+  console.log(chalk.red(figlet.textSync('\nthe Forge', { font: 'ANSI shadow', horizontalLayout: 'full' })));
   console.log(`Welcome to the Forge! ${welcomeString} 🔥 🔥 🔥\n`);
 };
 
@@ -85,7 +85,7 @@ if (options.help) { // Help flag entered, print help text
       ],
     },
     {
-      content: 'Project home 🏡 : {underline https://github.com/ProgrammersWitAttitudes/pwa_creator}',
+      content: 'Project home 🏡 : {underline https://forgepwa.com}\n\n Project repository: {underline https://github.com/forgepwa/the_forge}\n',
     },
   ];
   const usage = commandLineUsage(sections);
