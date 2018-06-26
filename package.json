@@ -31,12 +31,12 @@
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProgrammersWitAttitudes/pwa_creator.git"
+    "url": "git+https://github.com/forgepwa/the_forge.git"
   },
   "author": "Tiffany Yang, Christopher Washburn, Jeff Kang, Kyle Loftin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ProgrammersWitAttitudes/pwa_creator/issues"
+    "url": "https://github.com/forgepwa/the_forge/issues"
   },
-  "homepage": "https://github.com/ProgrammersWitAttitudes/pwa_creator#readme"
+  "homepage": "https://github.com/forgepwa/the_forge"
 }

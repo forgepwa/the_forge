@@ -55,7 +55,7 @@ Enjoy the Forge! 😊
 
 
 ## Issues / Feedback
-Submit any [issues](https://github.com/ProgrammersWitAttitudes/pwa_creator/issues) you have, any bug you find or any suggestions you'd like.
+Submit any [issues](https://github.com/forgepwa/the_forge/issues) you have, any bug you find or any suggestions you'd like.
 
 ## Contributors
 [Tiffany Yang](https://github.com/tyang1) | [Christopher Washburn](https://github.com/SKChristopher) | [Jeff Kang](https://github.com/jkang215) | [Kyle Loftin](https://github.com/KALoftin)
