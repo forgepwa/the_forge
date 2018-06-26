@@ -18,7 +18,7 @@ After authenticating, answer the questions to select what type of PWA you'd like
 Everything will be generated and deployed for you!<br />
 
 <p align='center'>
-<img src=https://media.giphy.com/media/2YnBCupyqeqIgwP9yd/giphy.gif width='600' alt='forge'>
+<img src=https://media.giphy.com/media/Nszy3vzLmWmGANWdaw/giphy.gif width='600' alt='forge'>
 </p>
 
 ### Start smithing your PWA immediately.
