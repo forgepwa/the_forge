@@ -1,6 +1,6 @@
 {
   "name": "the_forge",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "description": "A quick and easy command line interface for generating and hosting a Progressive Web App",
   "main": "index.js",
   "dependencies": {
@@ -40,6 +40,22 @@
   },
   "homepage": "https://github.com/forgepwa/the_forge",
   "keywords": [
-    "pwa", "progress web application", "firebase", "AWS", "generator", "react", "express", "node", "hosting", "deploy", "service worker", "deployment", "forge", "CLI", "mobile development", "mobile", "web development"
+    "pwa",
+    "progress web application",
+    "firebase",
+    "AWS",
+    "generator",
+    "react",
+    "express",
+    "node",
+    "hosting",
+    "deploy",
+    "service worker",
+    "deployment",
+    "forge",
+    "CLI",
+    "mobile development",
+    "mobile",
+    "web development"
   ]
 }
