@@ -4,7 +4,7 @@
 Create *and* deploy Progressive Web Apps with one simple command.
 
 <p align='center'>
-<img src=https://i.imgur.com/Bch4gAK.png width='600' alt='help screen'>
+<img src=https://i.imgur.com/nNPlBhp.png width='600' alt='help screen'>
 </p>
 
 ## Getting Started:
@@ -18,7 +18,7 @@ After authenticating, answer the questions to select what type of PWA you'd like
 Everything will be generated and deployed for you!<br />
 
 <p align='center'>
-<img src=https://media.giphy.com/media/Nszy3vzLmWmGANWdaw/giphy.gif width='600' alt='forge'>
+<img src=https://i.imgur.com/KL5r05L.gif width='600' alt='forge'>
 </p>
 
 ### Start smithing your PWA immediately.
