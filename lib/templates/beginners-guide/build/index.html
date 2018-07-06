@@ -21,10 +21,11 @@
   <img src="forge-bg.jpg" class="background-image"/>
   <div class="container-fluid">
     <div class="welcome">
-      <h1>Welcome to <span class="forge">the Forge</span> beginner's guide! 🔥</h1>
+      <h1>Welcome to <span class="forge">the Forge</span> beginner's guide!</h1>
     </div><br/>
     <div class="row">
       <div class="col-md intro">
+        <img class="logo" src="./theForge.png" alt="the Forge logo"/>
         <h3>What is a PWA? 🤷</h3>
         <p>The term Progressive Web Application (PWA) refers to a collection of paradigms and best practices for making a website or web application that functions similarly to a native mobile application.</p>
         <p>All Progressive Web Apps are:</p>
@@ -56,8 +57,9 @@
         <p>In Chrome, open the developers tools with Cmd + Option + J (Mac) or Ctrl + Shift + J (Windows).</p>
         <h5>Where can I find the service workers in the browser?</h5>
         <p>Navigate to the "Application" tab in the dev tools. On the left hand side, under the Application sub menu, click on "Service Workers".</p>
-        <p>* Todo: Add image of service worker page *</p>
-        <h5>Registering/Unregistering service workers</h5>
+        <img class="image" src="./chromeDevTools.png" alt="Chrome Dev Tools"/>
+        <br /><br />
+        <h5></h5>Registering/Unregistering service workers</h5>
         <p>Click on "Unregister" to remove the service worker that was installed when you loaded this HTML page. Refreshing the page should automatically reinstall the service worker.</p>
         <h5>Service workers in the code</h5>
         <p>If you open up the directory we forged for you, you'll see a "client" folder. In that folder, there is a file named "sw.js". This file is your service worker.</p>
@@ -69,7 +71,7 @@
       <div class="col-md">
         <div class="offline">
           <h3>Try Offline! 🤯</h3>
-          <p>Try turning off your WiFi and refreshing the page. Notice that you can still navigate the site. This is because of the service workers in sw.js! :O</p>
+          <p>Try turning off your WiFi and refreshing the page. Notice that you can still navigate the site. This is because of the service workers in sw.js! If you deployed using AWS, you'll have to configure HTTPS routing and obtain an SSL certificate to enable this feature.</p>
           <a href="https://developers.google.com/web/ilt/pwa/tools-for-pwa-developers" target="_blank">Service Worker Cache Information</a>
         </div>
         <div class="resources">
@@ -84,6 +86,7 @@
           </ul>
         </div>
         <h4>Thank you for using the Forge!</h4>
+        <img class="logo-bottom" src="./theForge.png" alt="the Forge logo"/>
       </div>
     </div>
   </div>
