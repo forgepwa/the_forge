@@ -4,6 +4,7 @@
   "description": "A quick and easy command line interface for generating and hosting a Progressive Web App",
   "main": "index.js",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "chalk": "^2.4.1",
     "clear": "^0.1.0",
     "clui": "^0.3.6",

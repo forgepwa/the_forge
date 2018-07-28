@@ -150,10 +150,11 @@ if (options.help) { // Help flag entered, print help text
       await aws.AWSLogin();
       const { projectName, projectChoice } = await inquirer.askTemplate();
       await generator.generateTemplate(projectName, projectChoice, host.hosting);
-      const https = await inquirer.askHTTPs();
-      if(https.HTTPS_option === 'yes') await (generator.generateEBConfig(projectName)).catch(err => {console.log("caught error", err)});
-      else{console.log("https config file cannot be generated")
-    }
+      // const https = await inquirer.askHTTPs();
+      // if(https.HTTPS_option === 'yes') 
+      // await (generator.generateEBConfig(projectName)).catch(err => {console.log("caught error", err)});
+      // else{console.log("https config file cannot be generated")
+    // }
       await aws.createCLI(projectName);
     } else { // Local deployment
       const { projectName, projectChoice } = await inquirer.askTemplate();
