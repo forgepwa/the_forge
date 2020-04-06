@@ -1,0 +1,60 @@
+body {
+  color: white;
+  background-color: black;
+}
+
+.background-image {
+  position: fixed;
+  width: 100%;
+  opacity: 0.55;
+  z-index: -1;
+}
+@media only screen and (max-device-width: 767px) {
+  .background-image {
+    width: auto;
+    left: -140%;
+  }
+}
+@media only screen and (max-device-width: 1024px) {
+  .background-image {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.logo {
+  display: none;
+}
+
+@media only screen and (max-device-width: 767px) {
+  .logo {
+    display: block;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+
+  .logo-bottom {
+    display: none;
+  }
+}
+
+.logo-bottom {
+  margin-top: 25px;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+}
+
+.forge {
+  color: orange;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.offline {
+  margin-bottom: 1rem;
+}

@@ -1,8 +1,0 @@
-{
-  "short_name": "react-PWA",
-  "name": "react-PWA",
-  "display": "standalone",
-  "start_url": "../build/index.html?launcher=true",
-  "theme_color": "#a040a0",
-  "background_color": "#EEEEEE"
-}

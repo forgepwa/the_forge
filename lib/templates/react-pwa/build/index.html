@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="img/forge-48.png">
+  <link rel="apple-touch-icon" sizes="96x96" href="img/forge-96.png">
+  <link rel="apple-touch-icon" sizes="196x196" href="img/forge-196.png">
+  <title>the Forge React PWA</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="bundle.js"></script>
+  <script>
+      // Check that service workers are registered
+      if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('./sw.js')
+            .then(function (reg) { reg.update();console.log('Service Worker precache'); });
+        });
+      }
+    </script> 
+</body>
+</html>

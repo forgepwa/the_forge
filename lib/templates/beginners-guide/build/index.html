@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="img/forge-48.png">
+  <link rel="apple-touch-icon" sizes="96x96" href="img/forge-96.png">
+  <link rel="apple-touch-icon" sizes="196x196" href="img/forge-196.png">
+  <title>Forge Beginners Guide</title>
+</head>
+<body>
+  <div id="background"></div>
+  <img src="forge-bg.jpg" class="background-image"/>
+  <div class="container-fluid">
+    <div class="welcome">
+      <h1>Welcome to <span class="forge">the Forge</span> beginner's guide!</h1>
+    </div><br/>
+    <div class="row">
+      <div class="col-md intro">
+        <img class="logo" src="./theForge.png" alt="the Forge logo"/>
+        <h3>What is a PWA? 🤷</h3>
+        <p>The term Progressive Web Application (PWA) refers to a collection of paradigms and best practices for making a website or web application that functions similarly to a native mobile application.</p>
+        <p>All Progressive Web Apps are:</p>
+        <dl>
+          <dt>Reliable</dt>
+          <dd>- Capable of running and providing a UI without internet connection</dd>
+          <dd>- Cross-platform loading on different browsers and desktop/mobile platforms</dd>
+          <dt>Fast</dt>
+          <dd>- Available on a mobile home screen without downloading from an app service</dd>
+          <dd>- Loads rapidly and can cache assets to be served immediately</dd>
+          <dt>Engaging</dt>
+          <dd>- Fluid UI that looks and feels like a traditional mobile application</dd>
+        </dl>
+        <p>Progressive Web Apps need to have the following properties:</p>
+        <ol>
+          <li>Served on HTTPS</li>
+          <li>Mobile and desktop friendly</li>
+          <li>All URL's load offline - Service workers cache all URL routes</li>
+          <li>Have a web app manifest - JSON file with info for running on mobile platforms</li>
+          <li>Load fast on bad connections - Initial download when the app starts up is small and fast</li>
+          <li>Works across all major browsers</li>
+          <li>Page transitions are snappy - Rendered as a single-page app with front end frameworks</li>
+        </ol>
+      </div>
+      <div class="col-md navigating">
+        <h3>Navigating the Code Base 🗺</h3>
+        <p>Here is a quick guide to get you familiar with what's going on in the browser and codebase we just forged for you.</p>
+        <h5>Accessing the developer console</h5>
+        <p>In Chrome, open the developers tools with Cmd + Option + J (Mac) or Ctrl + Shift + J (Windows).</p>
+        <h5>Where can I find the service workers in the browser?</h5>
+        <p>Navigate to the "Application" tab in the dev tools. On the left hand side, under the Application sub menu, click on "Service Workers".</p>
+        <img class="image" src="./chromeDevTools.png" alt="Chrome Dev Tools"/>
+        <br /><br />
+        <h5></h5>Registering/Unregistering service workers</h5>
+        <p>Click on "Unregister" to remove the service worker that was installed when you loaded this HTML page. Refreshing the page should automatically reinstall the service worker.</p>
+        <h5>Service workers in the code</h5>
+        <p>If you open up the directory we forged for you, you'll see a "client" folder. In that folder, there is a file named "sw.js". This file is your service worker.</p>
+        <h5>Seeing your cached files</h5>
+        <p>Back in the Application tab of dev tools, you can find a section labeled "Cache". Click on "Cache Storage" and select "beginners-guide" to see the cached files. For now, there is only one HTML file and one CSS file. Your service workers can cache up to 30 MB of files (depending on your browser)!</p>
+        <h5>Clearing the cache</h5>
+        <p>Just under the "Service Workers" on the Application tab, click the "Clear Storage" option. At the bottom, you can click "Clear site data" to both clear all cached files and unregister your service workers.</p>
+      </div>
+      <div class="col-md">
+        <div class="offline">
+          <h3>Try Offline! 🤯</h3>
+          <p>Try turning off your WiFi and refreshing the page. Notice that you can still navigate the site. This is because of the service workers in sw.js! If you deployed using AWS, you'll have to configure HTTPS routing and obtain an SSL certificate to enable this feature.</p>
+          <a href="https://developers.google.com/web/ilt/pwa/tools-for-pwa-developers" target="_blank">Service Worker Cache Information</a>
+        </div>
+        <div class="resources">
+          <h3>Resources 📚</h3>
+          <p>If you'd like to learn more about PWAs, check out these links:</p>
+          <ul>
+            <li><a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps | Google Developers</a></li>
+            <li><a href="https://pwa.rocks" target="_blank">Example PWAs</a></li>
+            <li><a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/index.html" target="_blank">Google Codelabs: Your First PWA Tutorial</a></li>
+            <li><a href="https://codelabs.developers.google.com/codelabs/workbox-lab/index.html" target="_blank">Google Codelabs: Build a PWA using Workbox Tutorial</a></li>
+            <li><a href="https://codelabs.developers.google.com/codelabs/migrate-to-progressive-web-apps/index.html" target="_blank">Google Codelabs: Migrate your site to a Progressive Web App Tutorial</a></li>
+          </ul>
+        </div>
+        <h4>Thank you for using the Forge!</h4>
+        <img class="logo-bottom" src="./theForge.png" alt="the Forge logo"/>
+      </div>
+    </div>
+  </div>
+  <script>
+      // Check that service workers are registered
+      if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('./sw.js')
+            .then(function (reg) {reg.update(); console.log('Service Worker precache'); });
+        });
+      }
+    </script> 
+</body>
+</html>
