@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "components": "./components",
+          "containers": "./containers",
+          "queries": "./graphql/queries"
+        }
+      }
+    ]
+  ]
+}
