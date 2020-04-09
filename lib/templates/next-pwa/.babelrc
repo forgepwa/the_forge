@@ -11,5 +11,9 @@
         }
       }
     ]
-  ]
+  ],
+  "test": {
+    "presets": ["react", "env", "stage-0"],
+    "plugins": ["require-context-hook"]
+  }
 }
