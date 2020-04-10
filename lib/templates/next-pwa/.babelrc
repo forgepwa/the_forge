@@ -10,7 +10,8 @@
           "queries": "./graphql/queries"
         }
       }
-    ]
+    ],
+    "require-context-hook"
   ],
   "test": {
     "presets": ["react", "env", "stage-0"],
