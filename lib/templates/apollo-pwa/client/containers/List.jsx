@@ -7,14 +7,16 @@ import Checkbox from "@material-ui/core/Checkbox";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { READ_TODOS } from "../components/Main.jsx";
 
-export default function ItemList() {
+export default function ItemList(props) {
+  //TODO: retrieving todoitems from db
+  const { createTodo, removeTodo } = props;
   const [checked, setChecked] = useState([0]);
+  // const [todos, setTodos] = useState(data.todos);
+  const { data } = useQuery(READ_TODOS);
   const [text, setText] = useState("");
-  const [todoItems, setToDoItems] = useState([
-    { name: "Study", done: false },
-    { name: "Take care", done: false },
-  ]);
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
@@ -32,14 +34,15 @@ export default function ItemList() {
   };
 
   const addTodoItem = (newItem) => {
-    let list = todoItems.slice();
-    list.push({ name: newItem, done: false });
-    setToDoItems(list);
+    // let list = todoItems.slice();
+    // list.push({ name: newItem, done: false });
+    // setToDoItems(list);
+    createTodo({ variables: { name: newItem } });
     setText("");
   };
   return (
     <List>
-      {todoItems.map((item, index) => {
+      {data.todos.map((item, index) => {
         const labelId = `checkbox-list-label-${index}`;
         return (
           <>
@@ -49,15 +52,20 @@ export default function ItemList() {
               onClick={handleToggle(index)}
             >
               <ListItemIcon>
-                <Checkbox
+                {/* <Checkbox
                   edge="start"
                   checked={checked.indexOf(index) !== -1}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ "aria-labelledby": labelId }}
-                />
+                /> */}
               </ListItemIcon>
               <ListItemText primary={`${item.name}`} />
+              <button
+                onClick={() => removeTodo({ variables: { id: item.id } })}
+              >
+                X
+              </button>
             </ListItem>
           </>
         );

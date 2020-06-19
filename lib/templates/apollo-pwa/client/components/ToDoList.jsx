@@ -14,12 +14,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ToDoList(props) {
+  const { data, createTodo, removeTodo } = props;
+  console.log("data", data);
   const classes = useStyles();
   return (
     <Card className={classes.root}>
       <CardHeader title="To Do List" subheader="September 14, 2016" />
       <CardContent>
-        <ItemList />
+        <ItemList data={data} createTodo={createTodo} removeTodo={removeTodo} />
       </CardContent>
     </Card>
   );
