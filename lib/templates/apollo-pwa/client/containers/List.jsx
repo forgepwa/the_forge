@@ -10,9 +10,9 @@ import Button from "@material-ui/core/Button";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { READ_TODOS } from "../components/Main.jsx";
 
-export default function ItemList(props) {
+export default function reItemList(props) {
   //TODO: retrieving todoitems from db
-  const { data, createTodo, removeTodo } = props;
+  const { data, createTodo, removeTodo, refetch } = props;
   const [checked, setChecked] = useState([0]);
   const [text, setText] = useState("");
   const handleToggle = (value) => () => {
@@ -36,6 +36,7 @@ export default function ItemList(props) {
     // list.push({ name: newItem, done: false });
     // setToDoItems(list);
     createTodo({ variables: { name: newItem } });
+    refetch();
     setText("");
   };
   return (
@@ -51,18 +52,13 @@ export default function ItemList(props) {
                 key={`item-${item.name}-${index}`}
                 onClick={handleToggle(index)}
               >
-                <ListItemIcon>
-                  {/* <Checkbox
-                  edge="start"
-                  checked={checked.indexOf(index) !== -1}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{ "aria-labelledby": labelId }}
-                /> */}
-                </ListItemIcon>
+                <ListItemIcon></ListItemIcon>
                 <ListItemText primary={`${item.name}`} />
                 <button
-                  onClick={() => removeTodo({ variables: { id: item.id } })}
+                  onClick={() => {
+                    removeTodo({ variables: { id: item.id } });
+                    refetch();
+                  }}
                 >
                   X
                 </button>

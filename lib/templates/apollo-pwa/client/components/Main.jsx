@@ -16,7 +16,10 @@ export const READ_TODOS = gql`
 
 export const CREATE_TODO = gql`
   mutation CreateTodo($name: String!) {
-    createTodo(name: $name)
+    createTodo(name: $name) {
+      id
+      name
+    }
   }
 `;
 
@@ -27,8 +30,19 @@ export const REMOVE_TODO = gql`
 `;
 
 export default function Main() {
-  const { data, loading, error } = useQuery(READ_TODOS);
+  const { data, loading, error, refetch } = useQuery(READ_TODOS, {
+    notifyOnNetworkStatusChange: true,
+  });
   const [createTodo] = useMutation(CREATE_TODO);
+  // const [createTodo] = useMutation(CREATE_TODO, {
+  //   update(cache, { data: { createTodo } }) {
+  //     const { todos } = cache.readQuery({ query: READ_TODOS });
+  //     cache.writeQuery({
+  //       query: READ_TODOS,
+  //       data: { todos: todos.concat([createTodo]) },
+  //     });
+  //   },
+  // }
   const [removeTodo] = useMutation(REMOVE_TODO);
 
   if (loading) return <p>loading...</p>;
@@ -36,7 +50,12 @@ export default function Main() {
   if (!data) return <p>Not found</p>;
 
   return (
-    <ToDoList data={data} createTodo={createTodo} removeTodo={removeTodo} />
+    <ToDoList
+      data={data}
+      refetch={refetch}
+      createTodo={createTodo}
+      removeTodo={removeTodo}
+    />
   );
 }
 
