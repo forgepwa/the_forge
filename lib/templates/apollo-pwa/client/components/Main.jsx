@@ -14,13 +14,13 @@ export const READ_TODOS = gql`
   }
 `;
 
-const CREATE_TODO = gql`
+export const CREATE_TODO = gql`
   mutation CreateTodo($name: String!) {
     createTodo(name: $name)
   }
 `;
 
-const REMOVE_TODO = gql`
+export const REMOVE_TODO = gql`
   mutation RemoveTodo($id: String!) {
     removeTodo(id: $id)
   }
@@ -35,7 +35,9 @@ export default function Main() {
   if (error) return <p>ERROR</p>;
   if (!data) return <p>Not found</p>;
 
-  return <ToDoList createTodo={createTodo} removeTodo={removeTodo} />;
+  return (
+    <ToDoList data={data} createTodo={createTodo} removeTodo={removeTodo} />
+  );
 }
 
 // Check that service workers are supported
