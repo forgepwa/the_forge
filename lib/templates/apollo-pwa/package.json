@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config ./jest.config.json",
-    "build": "webpack --mode=production --watch",
     "dev-server": "webpack-dev-server",
-    "start": "nodemon ./server/index.js"
+    "build": "webpack",
+    "start": "http-server public"
   },
   "author": "",
   "license": "ISC",
@@ -26,10 +26,13 @@
     "apollo-server-express": "^2.15.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
+    "clean-webpack-plugin": "^3.0.0",
     "cors": "^2.8.5",
     "css-loader": "^3.6.0",
     "express": "^4.17.1",
     "graphql-tag": "^2.10.3",
+    "html-webpack-plugin": "^4.3.0",
+    "html-webpack-root-plugin": "^0.10.0",
     "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -41,6 +44,7 @@
     "@apollo/react-testing": "^3.1.4",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "http-server": "^0.12.3",
     "jest": "^26.0.1",
     "waait": "^1.0.5",
     "webpack-cli": "^3.3.11",
