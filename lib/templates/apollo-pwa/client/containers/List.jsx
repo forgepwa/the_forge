@@ -32,11 +32,26 @@ export default function reItemList(props) {
   };
 
   const addTodoItem = (newItem) => {
-    // let list = todoItems.slice();
-    // list.push({ name: newItem, done: false });
-    // setToDoItems(list);
-    createTodo({ variables: { name: newItem } });
-    refetch();
+    createTodo({
+      variables: { name: newItem },
+      optimisticResponse: {
+        __typename: "Mutation",
+        createTodo: {
+          __typename: "Todo",
+          id: Math.round(Math.random() * -1000000),
+          name: "LALALA",
+          completed: false,
+        },
+      },
+      update(cache, { data: { createTodo } }) {
+        const { todos } = cache.readQuery({ query: READ_TODOS });
+        cache.writeQuery({
+          query: READ_TODOS,
+          data: { todos: todos.concat([createTodo]) },
+        });
+      },
+    });
+    // refetch();
     setText("");
   };
   return (

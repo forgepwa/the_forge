@@ -18,7 +18,9 @@ export const CREATE_TODO = gql`
   mutation CreateTodo($name: String!) {
     createTodo(name: $name) {
       id
+      __typename
       name
+      completed
     }
   }
 `;
@@ -34,15 +36,6 @@ export default function Main() {
     notifyOnNetworkStatusChange: true,
   });
   const [createTodo] = useMutation(CREATE_TODO);
-  // const [createTodo] = useMutation(CREATE_TODO, {
-  //   update(cache, { data: { createTodo } }) {
-  //     const { todos } = cache.readQuery({ query: READ_TODOS });
-  //     cache.writeQuery({
-  //       query: READ_TODOS,
-  //       data: { todos: todos.concat([createTodo]) },
-  //     });
-  //   },
-  // }
   const [removeTodo] = useMutation(REMOVE_TODO);
 
   if (loading) return <p>loading...</p>;
