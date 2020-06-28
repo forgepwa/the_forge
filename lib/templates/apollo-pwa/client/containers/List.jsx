@@ -34,12 +34,15 @@ export default function reItemList(props) {
   const addTodoItem = (newItem) => {
     createTodo({
       variables: { name: newItem },
+      context: {
+        serializationKey: "tracked",
+      },
       optimisticResponse: {
         __typename: "Mutation",
         createTodo: {
           __typename: "Todo",
           id: Math.round(Math.random() * -1000000),
-          name: "LALALA",
+          name: newItem,
           completed: false,
         },
       },
