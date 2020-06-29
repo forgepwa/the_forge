@@ -35,7 +35,8 @@ export default function reItemList(props) {
     createTodo({
       variables: { name: newItem },
       context: {
-        serializationKey: "tracked",
+        serializationKey: "Mutation",
+        tracked: true,
       },
       optimisticResponse: {
         __typename: "Mutation",
