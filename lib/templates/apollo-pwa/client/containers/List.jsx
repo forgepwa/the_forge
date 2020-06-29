@@ -52,6 +52,7 @@ export default function reItemList(props) {
           query: READ_TODOS,
           data: { todos: todos.concat([createTodo]) },
         });
+        console.log("cacne", cache);
       },
     });
     // refetch();
