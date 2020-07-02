@@ -8,7 +8,7 @@
     "dev-server": "webpack-dev-server",
     "build": "webpack",
     "start": "http-server public",
-    "store-test": "babel-tape-runner \"lib/**/__tests__/*-test.js\" | faucet"
+    "store-test": "npx babel-node node_modules/.bin/tape ./client/stores/action_creator-test.js | faucet"
   },
   "author": "",
   "license": "ISC",
@@ -49,11 +49,13 @@
   },
   "devDependencies": {
     "@apollo/react-testing": "^3.1.4",
-    "@babel/cli": "^7.10.3",
-    "@babel/core": "^7.10.3",
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
     "babel-tape-runner": "^3.0.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "esm": "^3.0.82",
     "faucet": "0.0.1",
     "http-server": "^0.12.3",
     "jest": "^26.0.1",
