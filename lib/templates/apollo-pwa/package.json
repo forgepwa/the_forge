@@ -8,6 +8,7 @@
     "dev-server": "webpack-dev-server",
     "build": "webpack",
     "start": "http-server public",
+    "server": "nodemon ./server/index.js",
     "store-test": "npx babel-node node_modules/.bin/tape ./client/stores/action_creator-test.js | faucet"
   },
   "author": "",

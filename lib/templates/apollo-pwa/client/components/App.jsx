@@ -5,11 +5,13 @@ import configureStore from "../stores/configureStore.js";
 
 const store = configureStore();
 
-export default App = () => (
-  <Provider store={store}>
-    <Main />
-  </Provider>
-);
+export default function App() {
+  return (
+    <Provider store={store}>
+      <Main />
+    </Provider>
+  );
+}
 
 // if (process.env.NODE_ENV !== 'production' && module.hot) {
 //   module.hot.accept('./components/App', renderApp)
